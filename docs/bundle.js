@@ -8207,11 +8207,23 @@
 	var defaultVideoId = 'CTl1BDngldc';
 	var videoId = _queryString2.default.parse(location.search)['v'] || defaultVideoId;
 
-	(0, _youtubePlayer2.default)('player-1', {
+	var player1 = (0, _youtubePlayer2.default)('player-1', {
 	  videoId: videoId
 	});
-	(0, _youtubePlayer2.default)('player-2', {
-	  videoId: 'q6_U9r2qZl8'
+	var player2 = (0, _youtubePlayer2.default)('player-2', {
+	  videoId: 'q6_U9r2qZl8',
+	  width: '0',
+	  height: '0'
+	});
+
+	function playBoth(p1, p2) {
+	  p1.playVideo();
+	  p2.playVideo();
+	}
+
+	document.addEventListener('DOMContentLoaded', function () {
+	  var $playButton = document.getElementById('play-button');
+	  $playButton.addEventListener('click', playBoth.bind(null, player1, player2));
 	});
 
 /***/ },
