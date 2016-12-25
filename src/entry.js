@@ -20,5 +20,5 @@ function playBoth(p1, p2) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const $playButton = document.getElementById('play-button');
-  $playButton.addEventListener('click' , playBoth.bind(null, player1, player2));
+  $playButton.addEventListener('click', playBoth.bind(null, player1, player2));
 });
