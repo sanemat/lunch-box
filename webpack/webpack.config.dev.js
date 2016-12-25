@@ -3,7 +3,10 @@ const root = process.cwd();
 
 const config = {
   entry: {
-    bundle: "./src/entry.js",
+    bundle: [
+      'babel-polyfill',
+      path.join(root, './src/entry.js'),
+    ],
   },
   output: {
     filename: path.join('[name].js'),
@@ -12,6 +15,7 @@ const config = {
   },
   module: {
     loaders: [
+      { test: /\.js$/, loader: 'babel', include: path.join(root, 'src') },
     ]
   }
 };

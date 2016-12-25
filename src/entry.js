@@ -1,1 +1,2 @@
-document.write("It works.");
+import example from './example';
+new example();
