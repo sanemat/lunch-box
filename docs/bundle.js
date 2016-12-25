@@ -8206,7 +8206,7 @@
 /* 299 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -8217,7 +8217,7 @@
 	var Example = function Example() {
 	  _classCallCheck(this, Example);
 
-	  console.log("It works;");
+	  console.log('It works;'); // eslint-disable-line no-console
 	};
 
 	exports.default = Example;

@@ -1,3 +1,3 @@
 import Example from './example';
 
-Example();
+new Example();
