@@ -5,7 +5,7 @@ const defaultVideoId = 'CTl1BDngldc';
 const videoId = queryString.parse(location.search).v || defaultVideoId;
 
 const player1 = YouTubePlayer('player-1', {
-  videoId: videoId,
+  videoId,
 });
 const player2 = YouTubePlayer('player-2', {
   videoId: 'q6_U9r2qZl8',
