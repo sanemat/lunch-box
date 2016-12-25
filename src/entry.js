@@ -2,7 +2,7 @@ import YouTubePlayer from 'youtube-player';
 import queryString from 'query-string';
 
 const defaultVideoId = 'CTl1BDngldc';
-const videoId = queryString.parse(location.search)['v'] || defaultVideoId;
+const videoId = queryString.parse(location.search).v || defaultVideoId;
 
 const player1 = YouTubePlayer('player-1', {
   videoId: videoId,

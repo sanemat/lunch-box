@@ -8205,7 +8205,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var defaultVideoId = 'CTl1BDngldc';
-	var videoId = _queryString2.default.parse(location.search)['v'] || defaultVideoId;
+	var videoId = _queryString2.default.parse(location.search).v || defaultVideoId;
 
 	var player1 = (0, _youtubePlayer2.default)('player-1', {
 	  videoId: videoId
