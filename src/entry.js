@@ -1,3 +1,4 @@
 import Example from './example';
 
-new Example();
+const example = new Example();
+example.hello();
