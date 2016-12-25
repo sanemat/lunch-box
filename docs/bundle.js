@@ -8228,10 +8228,10 @@
 
 	document.addEventListener('DOMContentLoaded', function () {
 	  Array.from(document.querySelectorAll('.play-button'), function (target) {
-	    target.addEventListener('click', playBoth.bind(null, player1, player2));
+	    return target.addEventListener('click', playBoth.bind(null, player1, player2));
 	  });
 	  Array.from(document.querySelectorAll('.force-lunch-box'), function (target) {
-	    target.addEventListener('click', forceLunchBox.bind(null, player1, player2));
+	    return target.addEventListener('click', forceLunchBox.bind(null, player1, player2));
 	  });
 	});
 

@@ -23,10 +23,6 @@ function forceLunchBox(_p1, _p2) { // eslint-disable-line no-unused-vars
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  Array.from(document.querySelectorAll('.play-button'), (target) => {
-    target.addEventListener('click', playBoth.bind(null, player1, player2));
-  });
-  Array.from(document.querySelectorAll('.force-lunch-box'), (target) => {
-    target.addEventListener('click', forceLunchBox.bind(null, player1, player2));
-  });
+  Array.from(document.querySelectorAll('.play-button'), target => target.addEventListener('click', playBoth.bind(null, player1, player2)));
+  Array.from(document.querySelectorAll('.force-lunch-box'), target => target.addEventListener('click', forceLunchBox.bind(null, player1, player2)));
 });
