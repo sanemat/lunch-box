@@ -8200,25 +8200,40 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	new _example2.default();
+	var example = new _example2.default();
+	example.hello();
 
 /***/ },
 /* 299 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Example = function Example() {
-	  _classCallCheck(this, Example);
+	var Example = function () {
+	  function Example() {
+	    _classCallCheck(this, Example);
 
-	  console.log("It works;");
-	};
+	    console.log('It works;'); // eslint-disable-line no-console
+	    this.a = 'hello';
+	  }
+
+	  _createClass(Example, [{
+	    key: 'hello',
+	    value: function hello() {
+	      console.log(this.a); // eslint-disable-line no-console
+	    }
+	  }]);
+
+	  return Example;
+	}();
 
 	exports.default = Example;
 
