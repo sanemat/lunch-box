@@ -18,7 +18,15 @@ function playBoth(p1, p2) {
   p2.playVideo();
 }
 
+function forceLunchBox(p1, p2) {
+  console.log('force lunch box');// eslint-disable-line no-console
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  const $playButton = document.getElementById('play-button');
-  $playButton.addEventListener('click', playBoth.bind(null, player1, player2));
+  Array.from(document.querySelectorAll('.play-button'), (target) => {
+    target.addEventListener('click', playBoth.bind(null, player1, player2));
+  });
+  Array.from(document.querySelectorAll('.force-lunch-box'), (target) => {
+    target.addEventListener('click', forceLunchBox.bind(null, player1, player2));
+  });
 });
