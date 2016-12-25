@@ -1,2 +1,3 @@
-import example from './example';
-new example();
+import Example from './example';
+
+Example();
