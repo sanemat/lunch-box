@@ -1,4 +1,8 @@
-import Example from './example';
+import YouTubePlayer from 'youtube-player';
 
-const example = new Example();
-example.hello();
+YouTubePlayer('player-1', {
+  videoId: 'CTl1BDngldc',
+});
+YouTubePlayer('player-2', {
+  videoId: 'q6_U9r2qZl8',
+});
