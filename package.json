@@ -32,6 +32,7 @@
     "verify": "npm run eslint"
   },
   "dependencies": {
+    "query-string": "^4.2.3",
     "youtube-player": "^4.0.2"
   }
 }
