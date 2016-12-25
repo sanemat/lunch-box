@@ -22,6 +22,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "node bin/build-dev.js && webpack --watch --config webpack/webpack.config.dev.js"
+    "dev": "node bin/build-dev.js && webpack --watch --config webpack/webpack.config.dev.js",
+    "preinstall": "node -e 'if(process.env.npm_execpath.indexOf(\"yarn\") === -1) throw new Error(\"You must use Yarn to install, not NPM\")'"
   }
 }
