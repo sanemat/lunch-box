@@ -6,7 +6,7 @@ const pify = require('pify');
 const rimraf = require('rimraf');
 const cpy = require('cpy');
 
-pify(rimraf)('docs').then(() => cpy(['src/index.html'], 'docs')).then(() => {
+pify(rimraf)('docs').then(() => cpy(['src/index.html', 'src/dokaben-blueback.jpg'], 'docs')).then(() => {
   console.log('It works fine.');
 }).catch((result) => {
   console.error(result);
