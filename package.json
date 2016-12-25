@@ -28,6 +28,7 @@
     "dev": "node bin/build-dev.js && webpack --watch --config webpack/webpack.config.dev.js",
     "eslint": "eslint src",
     "eslint:fix": "eslint --fix src",
-    "preinstall": "node -e 'if(process.env.npm_execpath.indexOf(\"yarn\") === -1) throw new Error(\"You must use Yarn to install, not NPM\")'"
+    "preinstall": "node -e 'if(process.env.npm_execpath.indexOf(\"yarn\") === -1) throw new Error(\"You must use Yarn to install, not NPM\")'",
+    "verify": "npm run eslint"
   }
 }
