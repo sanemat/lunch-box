@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "dev": "node bin/build-dev.js && webpack --watch --config webpack/webpack.config.dev.js"
+  },
   "devDependencies": {
     "browser-sync": "^2.18.5",
     "browser-sync-webpack-plugin": "^1.1.3",
