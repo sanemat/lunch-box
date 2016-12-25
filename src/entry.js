@@ -18,7 +18,7 @@ function playBoth(p1, p2) {
   p2.playVideo();
 }
 
-function forceLunchBox(_p1, _p2) {// eslint-disable-line no-unused-vars
+function forceLunchBox(_p1, _p2) { // eslint-disable-line no-unused-vars
   console.log('force lunch box');// eslint-disable-line no-console
 }
 
