@@ -8207,9 +8207,11 @@
 	var previousDefaultId = 'CTl1BDngldc';
 	var nextDefaultId = 'q6_U9r2qZl8';
 	var marginDefaultSecond = 6;
+	var startDefaultSecond = 5;
 	var previousVideoId = _queryString2.default.parse(location.search).pv || previousDefaultId;
 	var nextVideoId = _queryString2.default.parse(location.search).nv || nextDefaultId;
 	var marginSecond = _queryString2.default.parse(location.search).mg || marginDefaultSecond;
+	var startSecond = _queryString2.default.parse(location.search).st || startDefaultSecond;
 
 	var player1 = (0, _youtubePlayer2.default)('player-1', {
 	  videoId: previousVideoId
@@ -8233,6 +8235,21 @@
 	  p2.playVideo();
 	  p1.mute();
 	}
+
+	var switched = false;
+	function update(p1, p2) {
+	  setTimeout(update.bind(null, p1, p2), 1000 / 60);
+	  if (switched) {
+	    return;
+	  }
+	  p1.getCurrentTime().then(function (result) {
+	    if (result > startSecond) {
+	      switched = true;
+	      forceLunchBox(p1, p2);
+	    }
+	  });
+	}
+	update(player1, player2);
 
 	document.addEventListener('DOMContentLoaded', function () {
 	  Array.from(document.querySelectorAll('.play-button'), function (target) {
