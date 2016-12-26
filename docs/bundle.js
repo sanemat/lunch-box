@@ -8214,14 +8214,18 @@
 	var startSecond = _queryString2.default.parse(location.search).st || startDefaultSecond;
 
 	var player1 = (0, _youtubePlayer2.default)('player-1', {
-	  videoId: previousVideoId
+	  videoId: previousVideoId,
+	  playerVars: {
+	    playsinline: 1
+	  }
 	});
 	var player2 = (0, _youtubePlayer2.default)('player-2', {
 	  videoId: nextVideoId,
 	  width: '0',
 	  height: '0',
 	  playerVars: {
-	    start: marginSecond
+	    start: marginSecond,
+	    playsinline: 1
 	  }
 	});
 
