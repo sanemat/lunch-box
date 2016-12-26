@@ -12,6 +12,9 @@ const startSecond = queryString.parse(location.search).st || startDefaultSecond;
 
 const player1 = YouTubePlayer('player-1', {
   videoId: previousVideoId,
+  playerVars: {
+    playsinline: 1,
+  },
 });
 const player2 = YouTubePlayer('player-2', {
   videoId: nextVideoId,
@@ -19,6 +22,7 @@ const player2 = YouTubePlayer('player-2', {
   height: '0',
   playerVars: {
     start: marginSecond,
+    playsinline: 1,
   },
 });
 
