@@ -14,7 +14,7 @@ const player1 = YouTubePlayer('player-1', {
   videoId: previousVideoId,
   playerVars: {
     playsinline: 1,
-  }
+  },
 });
 const player2 = YouTubePlayer('player-2', {
   videoId: nextVideoId,
