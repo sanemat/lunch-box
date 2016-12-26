@@ -23,10 +23,12 @@ const player2 = YouTubePlayer('player-2', {
 function playBoth(p1, p2) {
   p1.playVideo();
   p2.playVideo();
+  p2.pauseVideo();
 }
 
-function forceLunchBox(_p1, _p2) { // eslint-disable-line no-unused-vars
-  console.log('force lunch box');// eslint-disable-line no-console
+function forceLunchBox(p1, p2) {
+  p2.playVideo();
+  p1.mute();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

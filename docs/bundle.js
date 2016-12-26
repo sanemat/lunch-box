@@ -8206,9 +8206,10 @@
 
 	var previousDefaultId = 'CTl1BDngldc';
 	var nextDefaultId = 'q6_U9r2qZl8';
+	var marginDefaultSecond = 6;
 	var previousVideoId = _queryString2.default.parse(location.search).pv || previousDefaultId;
 	var nextVideoId = _queryString2.default.parse(location.search).nv || nextDefaultId;
-	var marginSecond = _queryString2.default.parse(location.search).nv || nextDefaultId;
+	var marginSecond = _queryString2.default.parse(location.search).mg || marginDefaultSecond;
 
 	var player1 = (0, _youtubePlayer2.default)('player-1', {
 	  videoId: previousVideoId
@@ -8218,18 +8219,19 @@
 	  width: '0',
 	  height: '0',
 	  playerVars: {
-	    start: 6
+	    start: marginSecond
 	  }
 	});
 
 	function playBoth(p1, p2) {
 	  p1.playVideo();
 	  p2.playVideo();
+	  p2.pauseVideo();
 	}
 
-	function forceLunchBox(_p1, _p2) {
-	  // eslint-disable-line no-unused-vars
-	  console.log('force lunch box'); // eslint-disable-line no-console
+	function forceLunchBox(p1, p2) {
+	  p2.playVideo();
+	  p1.mute();
 	}
 
 	document.addEventListener('DOMContentLoaded', function () {
