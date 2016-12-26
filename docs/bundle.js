@@ -8204,14 +8204,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var defaultVideoId = 'CTl1BDngldc';
-	var previousVideoId = _queryString2.default.parse(location.search).pv || defaultVideoId;
+	var previousDefaultId = 'CTl1BDngldc';
+	var nextDefaultId = 'q6_U9r2qZl8';
+	var previousVideoId = _queryString2.default.parse(location.search).pv || previousDefaultId;
+	var nextVideoId = _queryString2.default.parse(location.search).nv || nextDefaultId;
+	var marginSecond = _queryString2.default.parse(location.search).nv || nextDefaultId;
 
 	var player1 = (0, _youtubePlayer2.default)('player-1', {
 	  videoId: previousVideoId
 	});
 	var player2 = (0, _youtubePlayer2.default)('player-2', {
-	  videoId: 'q6_U9r2qZl8',
+	  videoId: nextVideoId,
 	  width: '0',
 	  height: '0',
 	  playerVars: {

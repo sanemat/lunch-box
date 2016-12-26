@@ -1,18 +1,22 @@
 import YouTubePlayer from 'youtube-player';
 import queryString from 'query-string';
 
-const defaultVideoId = 'CTl1BDngldc';
-const previousVideoId = queryString.parse(location.search).pv || defaultVideoId;
+const previousDefaultId = 'CTl1BDngldc';
+const nextDefaultId = 'q6_U9r2qZl8';
+const marginDefaultSecond = 6;
+const previousVideoId = queryString.parse(location.search).pv || previousDefaultId;
+const nextVideoId = queryString.parse(location.search).nv || nextDefaultId;
+const marginSecond = queryString.parse(location.search).mg || marginDefaultSecond;
 
 const player1 = YouTubePlayer('player-1', {
   videoId: previousVideoId,
 });
 const player2 = YouTubePlayer('player-2', {
-  videoId: 'q6_U9r2qZl8',
+  videoId: nextVideoId,
   width: '0',
   height: '0',
   playerVars: {
-    start: 6,
+    start: marginSecond,
   },
 });
 
