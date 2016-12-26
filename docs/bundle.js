@@ -8231,6 +8231,11 @@
 	  p2.pauseVideo();
 	}
 
+	function forceLunchBox(p1, p2) {
+	  p2.playVideo();
+	  p1.mute();
+	}
+
 	var switched = false;
 	function update(p1, p2) {
 	  setTimeout(update.bind(null, p1, p2), 1000 / 60);
@@ -8239,17 +8244,12 @@
 	  }
 	  p1.getCurrentTime().then(function (result) {
 	    if (result > startSecond) {
-	      forceLunchBox(p1, p2);
 	      switched = true;
+	      forceLunchBox(p1, p2);
 	    }
 	  });
 	}
 	update(player1, player2);
-
-	function forceLunchBox(p1, p2) {
-	  p2.playVideo();
-	  p1.mute();
-	}
 
 	document.addEventListener('DOMContentLoaded', function () {
 	  Array.from(document.querySelectorAll('.play-button'), function (target) {

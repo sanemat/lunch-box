@@ -28,6 +28,11 @@ function playBoth(p1, p2) {
   p2.pauseVideo();
 }
 
+function forceLunchBox(p1, p2) {
+  p2.playVideo();
+  p1.mute();
+}
+
 let switched = false;
 function update(p1, p2) {
   setTimeout(update.bind(null, p1, p2), 1000 / 60);
@@ -41,11 +46,6 @@ function update(p1, p2) {
     });
 }
 update(player1, player2);
-
-function forceLunchBox(p1, p2) {
-  p2.playVideo();
-  p1.mute();
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   Array.from(document.querySelectorAll('.play-button'), target => target.addEventListener('click', playBoth.bind(null, player1, player2)));
