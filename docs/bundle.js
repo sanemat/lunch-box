@@ -8216,7 +8216,10 @@
 	var player1 = (0, _youtubePlayer2.default)('player-1', {
 	  videoId: previousVideoId,
 	  playerVars: {
-	    playsinline: 1
+	    playsinline: 1,
+	    showinfo: 0,
+	    rel: 0,
+	    wmode: 'transparent'
 	  }
 	});
 	var player2 = (0, _youtubePlayer2.default)('player-2', {
@@ -8225,7 +8228,8 @@
 	  height: '0',
 	  playerVars: {
 	    start: marginSecond,
-	    playsinline: 1
+	    playsinline: 1,
+	    wmode: 'transparent'
 	  }
 	});
 
