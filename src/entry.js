@@ -1,5 +1,6 @@
 import YouTubePlayer from 'youtube-player';
 import queryString from 'query-string';
+import playerCss from './player.css';
 
 const previousDefaultId = 'CTl1BDngldc';
 const nextDefaultId = 'q6_U9r2qZl8';
