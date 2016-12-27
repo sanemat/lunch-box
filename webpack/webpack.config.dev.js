@@ -21,9 +21,10 @@ const config = {
   ],
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel', include: path.join(root, 'src') },
+      { test: /\.js$/, loaders: ['babel'], include: path.join(root, 'src') },
       { test: /\.css$/, loaders: ['style', 'css'], include: path.join(root, 'src') },
-      { test: /\.html$/, loaders: ['html'], include: path.join(root, 'src') }
+      { test: /\.html$/, loaders: ['html'], include: path.join(root, 'src') },
+      { test: /\.(jpg|png)$/, loaders: ['url'], include: path.join(root, 'src') }
     ]
   }
 };

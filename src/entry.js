@@ -60,6 +60,6 @@ function update(p1, p2) {
 update(player1, player2);
 
 document.addEventListener('DOMContentLoaded', () => {
-  Array.from(document.querySelectorAll('.play-button'), target => target.addEventListener('click', playBoth.bind(null, player1, player2)));
+  document.getElementById('player-1-wrapper').addEventListener('click', playBoth.bind(null, player1, player2));
   Array.from(document.querySelectorAll('.force-lunch-box'), target => target.addEventListener('click', forceLunchBox.bind(null, player1, player2)));
 });
