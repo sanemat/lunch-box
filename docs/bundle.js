@@ -8202,9 +8202,15 @@
 
 	var _queryString2 = _interopRequireDefault(_queryString);
 
-	__webpack_require__(311);
+	var _container = __webpack_require__(311);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	__webpack_require__(312);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	document.querySelector('.app-container').innerHTML = _container2.default;
 
 	var previousDefaultId = 'CTl1BDngldc';
 	var nextDefaultId = 'q6_U9r2qZl8';
@@ -25967,15 +25973,21 @@
 
 /***/ },
 /* 311 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"player-1\"></div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n    <button class=\"play-button\">play-button</button>\n    <button class=\"force-lunch-box\">force-lunch-box</button>\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n</div>\n";
+
+/***/ },
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(312);
+	var content = __webpack_require__(313);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(314)(content, {});
+	var update = __webpack_require__(315)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -25992,10 +26004,10 @@
 	}
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(313)();
+	exports = module.exports = __webpack_require__(314)();
 	// imports
 
 
@@ -26006,7 +26018,7 @@
 
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports) {
 
 	/*
@@ -26062,7 +26074,7 @@
 
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

@@ -19,6 +19,7 @@
     "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
+    "html-loader": "^0.4.4",
     "pify": "^2.3.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
