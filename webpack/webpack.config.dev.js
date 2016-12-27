@@ -22,7 +22,8 @@ const config = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel', include: path.join(root, 'src') },
-      { test: /\.css$/, loaders: ['style', 'css'], include: path.join(root, 'src') }
+      { test: /\.css$/, loaders: ['style', 'css'], include: path.join(root, 'src') },
+      { test: /\.html$/, loaders: ['html'], include: path.join(root, 'src') }
     ]
   }
 };

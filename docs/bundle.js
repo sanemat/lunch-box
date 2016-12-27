@@ -8194,17 +8194,23 @@
 
 	'use strict';
 
-	var _youtubePlayer = __webpack_require__(299);
+	var _container = __webpack_require__(299);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	var _youtubePlayer = __webpack_require__(300);
 
 	var _youtubePlayer2 = _interopRequireDefault(_youtubePlayer);
 
-	var _queryString = __webpack_require__(308);
+	var _queryString = __webpack_require__(309);
 
 	var _queryString2 = _interopRequireDefault(_queryString);
 
-	__webpack_require__(311);
+	__webpack_require__(312);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	document.querySelector('.app-container').innerHTML = _container2.default;
 
 	var previousDefaultId = 'CTl1BDngldc';
 	var nextDefaultId = 'q6_U9r2qZl8';
@@ -8272,6 +8278,12 @@
 
 /***/ },
 /* 299 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"player-1\"></div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n    <button class=\"play-button\">play-button</button>\n    <button class=\"force-lunch-box\">force-lunch-box</button>\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n</div>\n";
+
+/***/ },
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8280,19 +8292,19 @@
 	  value: true
 	});
 
-	var _lodash = __webpack_require__(300);
+	var _lodash = __webpack_require__(301);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _sister = __webpack_require__(302);
+	var _sister = __webpack_require__(303);
 
 	var _sister2 = _interopRequireDefault(_sister);
 
-	var _loadYouTubeIframeApi = __webpack_require__(303);
+	var _loadYouTubeIframeApi = __webpack_require__(304);
 
 	var _loadYouTubeIframeApi2 = _interopRequireDefault(_loadYouTubeIframeApi);
 
-	var _YouTubePlayer = __webpack_require__(305);
+	var _YouTubePlayer = __webpack_require__(306);
 
 	var _YouTubePlayer2 = _interopRequireDefault(_YouTubePlayer);
 
@@ -8364,7 +8376,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -25452,10 +25464,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(301)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(302)(module)))
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -25471,7 +25483,7 @@
 
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -25537,7 +25549,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25546,7 +25558,7 @@
 	  value: true
 	});
 
-	var _loadScript = __webpack_require__(304);
+	var _loadScript = __webpack_require__(305);
 
 	var _loadScript2 = _interopRequireDefault(_loadScript);
 
@@ -25583,7 +25595,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports) {
 
 	
@@ -25654,7 +25666,7 @@
 
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25663,15 +25675,15 @@
 	  value: true
 	});
 
-	var _lodash = __webpack_require__(300);
+	var _lodash = __webpack_require__(301);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _functionNames = __webpack_require__(306);
+	var _functionNames = __webpack_require__(307);
 
 	var _functionNames2 = _interopRequireDefault(_functionNames);
 
-	var _eventNames = __webpack_require__(307);
+	var _eventNames = __webpack_require__(308);
 
 	var _eventNames2 = _interopRequireDefault(_eventNames);
 
@@ -25731,7 +25743,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25746,7 +25758,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25761,12 +25773,12 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var strictUriEncode = __webpack_require__(309);
-	var objectAssign = __webpack_require__(310);
+	var strictUriEncode = __webpack_require__(310);
+	var objectAssign = __webpack_require__(311);
 
 	function encode(value, opts) {
 		if (opts.encode) {
@@ -25865,7 +25877,7 @@
 
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25877,7 +25889,7 @@
 
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25966,16 +25978,16 @@
 
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(312);
+	var content = __webpack_require__(313);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(314)(content, {});
+	var update = __webpack_require__(315)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -25992,10 +26004,10 @@
 	}
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(313)();
+	exports = module.exports = __webpack_require__(314)();
 	// imports
 
 
@@ -26006,7 +26018,7 @@
 
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports) {
 
 	/*
@@ -26062,7 +26074,7 @@
 
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

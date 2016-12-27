@@ -1,3 +1,6 @@
+import containerHtml from './container.html';
+document.querySelector('.app-container').innerHTML = containerHtml;
+
 import YouTubePlayer from 'youtube-player';
 import queryString from 'query-string';
 import './player.css';
