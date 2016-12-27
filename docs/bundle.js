@@ -8194,17 +8194,17 @@
 
 	'use strict';
 
-	var _container = __webpack_require__(299);
-
-	var _container2 = _interopRequireDefault(_container);
-
-	var _youtubePlayer = __webpack_require__(300);
+	var _youtubePlayer = __webpack_require__(299);
 
 	var _youtubePlayer2 = _interopRequireDefault(_youtubePlayer);
 
-	var _queryString = __webpack_require__(309);
+	var _queryString = __webpack_require__(308);
 
 	var _queryString2 = _interopRequireDefault(_queryString);
+
+	var _container = __webpack_require__(311);
+
+	var _container2 = _interopRequireDefault(_container);
 
 	__webpack_require__(312);
 
@@ -8278,12 +8278,6 @@
 
 /***/ },
 /* 299 */
-/***/ function(module, exports) {
-
-	module.exports = "<div id=\"player-1\"></div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n    <button class=\"play-button\">play-button</button>\n    <button class=\"force-lunch-box\">force-lunch-box</button>\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n</div>\n";
-
-/***/ },
-/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8292,19 +8286,19 @@
 	  value: true
 	});
 
-	var _lodash = __webpack_require__(301);
+	var _lodash = __webpack_require__(300);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _sister = __webpack_require__(303);
+	var _sister = __webpack_require__(302);
 
 	var _sister2 = _interopRequireDefault(_sister);
 
-	var _loadYouTubeIframeApi = __webpack_require__(304);
+	var _loadYouTubeIframeApi = __webpack_require__(303);
 
 	var _loadYouTubeIframeApi2 = _interopRequireDefault(_loadYouTubeIframeApi);
 
-	var _YouTubePlayer = __webpack_require__(306);
+	var _YouTubePlayer = __webpack_require__(305);
 
 	var _YouTubePlayer2 = _interopRequireDefault(_YouTubePlayer);
 
@@ -8376,7 +8370,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -25464,10 +25458,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(302)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(301)(module)))
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -25483,7 +25477,7 @@
 
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -25549,7 +25543,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 304 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25558,7 +25552,7 @@
 	  value: true
 	});
 
-	var _loadScript = __webpack_require__(305);
+	var _loadScript = __webpack_require__(304);
 
 	var _loadScript2 = _interopRequireDefault(_loadScript);
 
@@ -25595,7 +25589,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 305 */
+/* 304 */
 /***/ function(module, exports) {
 
 	
@@ -25666,7 +25660,7 @@
 
 
 /***/ },
-/* 306 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25675,15 +25669,15 @@
 	  value: true
 	});
 
-	var _lodash = __webpack_require__(301);
+	var _lodash = __webpack_require__(300);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _functionNames = __webpack_require__(307);
+	var _functionNames = __webpack_require__(306);
 
 	var _functionNames2 = _interopRequireDefault(_functionNames);
 
-	var _eventNames = __webpack_require__(308);
+	var _eventNames = __webpack_require__(307);
 
 	var _eventNames2 = _interopRequireDefault(_eventNames);
 
@@ -25743,7 +25737,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 307 */
+/* 306 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25758,7 +25752,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 308 */
+/* 307 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25773,12 +25767,12 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 309 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var strictUriEncode = __webpack_require__(310);
-	var objectAssign = __webpack_require__(311);
+	var strictUriEncode = __webpack_require__(309);
+	var objectAssign = __webpack_require__(310);
 
 	function encode(value, opts) {
 		if (opts.encode) {
@@ -25877,7 +25871,7 @@
 
 
 /***/ },
-/* 310 */
+/* 309 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25889,7 +25883,7 @@
 
 
 /***/ },
-/* 311 */
+/* 310 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25976,6 +25970,12 @@
 		return to;
 	};
 
+
+/***/ },
+/* 311 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"player-1\"></div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n    <button class=\"play-button\">play-button</button>\n    <button class=\"force-lunch-box\">force-lunch-box</button>\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n</div>\n";
 
 /***/ },
 /* 312 */
