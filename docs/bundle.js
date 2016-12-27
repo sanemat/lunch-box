@@ -8202,9 +8202,7 @@
 
 	var _queryString2 = _interopRequireDefault(_queryString);
 
-	var _player = __webpack_require__(311);
-
-	var _player2 = _interopRequireDefault(_player);
+	__webpack_require__(311);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
