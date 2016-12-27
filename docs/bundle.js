@@ -8268,9 +8268,7 @@
 	update(player1, player2);
 
 	document.addEventListener('DOMContentLoaded', function () {
-	  Array.from(document.querySelectorAll('.play-button'), function (target) {
-	    return target.addEventListener('click', playBoth.bind(null, player1, player2));
-	  });
+	  document.getElementById('player-1-wrapper').addEventListener('click', playBoth.bind(null, player1, player2));
 	  Array.from(document.querySelectorAll('.force-lunch-box'), function (target) {
 	    return target.addEventListener('click', forceLunchBox.bind(null, player1, player2));
 	  });
@@ -25975,7 +25973,7 @@
 /* 311 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"player-1\"></div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n    <button class=\"play-button\">play-button</button>\n    <button class=\"force-lunch-box\">force-lunch-box</button>\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n</div>\n";
+	module.exports = "<div id=\"player-1-wrapper\">\n    <div id=\"player-1\"></div>\n</div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n    <button class=\"force-lunch-box\">force-lunch-box</button>\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n</div>\n";
 
 /***/ },
 /* 312 */
