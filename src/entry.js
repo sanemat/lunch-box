@@ -16,7 +16,7 @@ const player1 = YouTubePlayer('player-1', {
     playsinline: 1,
     showinfo: 0,
     rel: 0,
-    wmode : 'transparent',
+    wmode: 'transparent',
   },
 });
 const player2 = YouTubePlayer('player-2', {
@@ -26,7 +26,7 @@ const player2 = YouTubePlayer('player-2', {
   playerVars: {
     start: marginSecond,
     playsinline: 1,
-    wmode : 'transparent',
+    wmode: 'transparent',
   },
 });
 
