@@ -63,5 +63,4 @@ update(player1, player2);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('player-1-wrapper').addEventListener('click', playBoth.bind(null, player1, player2));
-  Array.from(document.getElementsByClassName('force-lunch-box'), target => target.addEventListener('click', forceLunchBox.bind(null, player1, player2)));
 });
