@@ -8274,7 +8274,7 @@
 
 	document.addEventListener('DOMContentLoaded', function () {
 	  document.getElementById('player-1-wrapper').addEventListener('click', playBoth.bind(null, player1, player2));
-	  Array.from(document.querySelectorAll('.force-lunch-box'), function (target) {
+	  Array.from(document.getElementsByClassName('force-lunch-box'), function (target) {
 	    return target.addEventListener('click', forceLunchBox.bind(null, player1, player2));
 	  });
 	});
