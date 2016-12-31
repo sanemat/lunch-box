@@ -2,6 +2,7 @@ import YouTubePlayer from 'youtube-player';
 import queryString from 'query-string';
 import containerHtml from './container.html';
 import './player.css';
+import './dokaben.css';
 
 document.querySelector('.app-container').innerHTML = containerHtml;
 
