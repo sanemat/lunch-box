@@ -1,2 +1,18 @@
 body {
 }
+
+.js-lunch-box {
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+#player-1-wrapper {
+    z-index: 1;
+    position: relative;
+}

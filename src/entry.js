@@ -44,6 +44,7 @@ function playBoth(p1, p2) {
 function forceLunchBox(p1, p2) {
   p2.playVideo();
   p1.mute();
+  Array.from(document.getElementsByClassName('js-lunch-box'), target => target.classList.remove('hidden'));
 }
 
 let switched = false;
