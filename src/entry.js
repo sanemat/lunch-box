@@ -2,6 +2,7 @@ import YouTubePlayer from 'youtube-player';
 import queryString from 'query-string';
 import containerHtml from './container.html';
 import './player.css';
+import './dokaben.css';
 
 document.querySelector('.app-container').innerHTML = containerHtml;
 
@@ -43,6 +44,7 @@ function playBoth(p1, p2) {
 function forceLunchBox(p1, p2) {
   p2.playVideo();
   p1.mute();
+  Array.from(document.getElementsByClassName('js-lunch-box'), target => target.classList.remove('hidden'));
 }
 
 let switched = false;
