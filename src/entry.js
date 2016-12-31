@@ -6,10 +6,10 @@ import './dokaben.css';
 
 document.querySelector('.app-container').innerHTML = containerHtml;
 
-const previousDefaultId = 'CTl1BDngldc';
+const previousDefaultId = 'k4xGqY5IDBE';
 const nextDefaultId = 'q6_U9r2qZl8';
 const marginDefaultSecond = 6;
-const startDefaultSecond = 5;
+const startDefaultSecond = 11;
 const previousVideoId = queryString.parse(location.search).pv || previousDefaultId;
 const nextVideoId = queryString.parse(location.search).nv || nextDefaultId;
 const marginSecond = queryString.parse(location.search).mg || marginDefaultSecond;

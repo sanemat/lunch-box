@@ -8214,10 +8214,10 @@
 
 	document.querySelector('.app-container').innerHTML = _container2.default;
 
-	var previousDefaultId = 'CTl1BDngldc';
+	var previousDefaultId = 'k4xGqY5IDBE';
 	var nextDefaultId = 'q6_U9r2qZl8';
 	var marginDefaultSecond = 6;
-	var startDefaultSecond = 5;
+	var startDefaultSecond = 11;
 	var previousVideoId = _queryString2.default.parse(location.search).pv || previousDefaultId;
 	var nextVideoId = _queryString2.default.parse(location.search).nv || nextDefaultId;
 	var marginSecond = _queryString2.default.parse(location.search).mg || marginDefaultSecond;
@@ -25978,7 +25978,7 @@
 /* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div id=\"player-1-wrapper\">\n    <div id=\"player-1\"></div>\n    <img src=\"" + __webpack_require__(312) + "\" class=\"js-lunch-box dokaben komaochi loop hidden\">\n</div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n    <button class=\"force-lunch-box\">force-lunch-box</button>\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n    Usage:\n    <ul>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=10\">https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=10</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10\">https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=mjyeBXDWiHg&st=10\">https://sanemat.github.io/lunch-box/?pv=mjyeBXDWiHg&st=10</a></li>\n    </ul>\n</div>\n";
+	module.exports = "<div id=\"player-1-wrapper\">\n    <div id=\"player-1\"></div>\n    <img src=\"" + __webpack_require__(312) + "\" class=\"js-lunch-box dokaben komaochi loop hidden\">\n</div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n    <button class=\"force-lunch-box\">force-lunch-box</button>\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n    Usage:\n    <ul>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11\">https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10\">https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5\">https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5</a></li>\n    </ul>\n</div>\n";
 
 /***/ },
 /* 312 */
