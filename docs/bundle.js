@@ -8202,13 +8202,19 @@
 
 	var _queryString2 = _interopRequireDefault(_queryString);
 
-	var _container = __webpack_require__(311);
+	var _mobileDetect = __webpack_require__(311);
+
+	var _mobileDetect2 = _interopRequireDefault(_mobileDetect);
+
+	var _container = __webpack_require__(313);
 
 	var _container2 = _interopRequireDefault(_container);
 
-	__webpack_require__(313);
+	__webpack_require__(315);
 
-	__webpack_require__(317);
+	__webpack_require__(319);
+
+	__webpack_require__(321);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8272,8 +8278,24 @@
 	}
 	update(player1, player2);
 
+	function setTweetUrl() {
+	  var md = new _mobileDetect2.default(window.navigator.userAgent);
+	  var targetUrl = '#';
+	  if (md.is('iOS')) {
+	    targetUrl = 'twitter://post?message=' + encodeURIComponent('\u5168\u304F\u6C17\u4ED8\u304B\u306A\u3044\u3046\u3061\u306B\u3042\u306E\u66F2\u306B\u306A\u308B ' + location.href);
+	  } else if (md.is('androidOS')) {
+	    targetUrl = 'intent://post?message=' + encodeURIComponent('\u5168\u304F\u6C17\u4ED8\u304B\u306A\u3044\u3046\u3061\u306B\u3042\u306E\u66F2\u306B\u306A\u308B ' + location.href) + '#Intent;scheme=twitter;package=com.twitter.android;end;';
+	  } else {
+	    targetUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent('全く気付かないうちにあの曲になる') + '&url=' + encodeURIComponent(location.href);
+	  }
+	  Array.from(document.getElementsByClassName('btn-twitter'), function (target) {
+	    target.href = targetUrl;return false;
+	  }); // eslint-disable-line no-param-reassign
+	}
+
 	document.addEventListener('DOMContentLoaded', function () {
 	  document.getElementById('player-1-wrapper').addEventListener('click', playBoth.bind(null, player1, player2));
+	  setTweetUrl();
 	});
 
 /***/ },
@@ -25975,25 +25997,1028 @@
 /* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div id=\"player-1-wrapper\">\n    <div id=\"player-1\"></div>\n    <img src=\"" + __webpack_require__(312) + "\" class=\"js-lunch-box dokaben komaochi loop hidden\">\n</div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n    Usage:\n    <ul>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11\">https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10\">https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5\">https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5</a></li>\n    </ul>\n</div>\n";
+	// THIS FILE IS GENERATED - DO NOT EDIT!
+	/*!mobile-detect v1.3.5 2016-11-14*/
+	/*global module:false, define:false*/
+	/*jshint latedef:false*/
+	/*!@license Copyright 2013, Heinrich Goebl, License: MIT, see https://github.com/hgoebl/mobile-detect.js*/
+	(function (define, undefined) {
+	define(function () {
+	    'use strict';
+
+	    var impl = {};
+
+	    impl.mobileDetectRules = {
+	    "phones": {
+	        "iPhone": "\\biPhone\\b|\\biPod\\b",
+	        "BlackBerry": "BlackBerry|\\bBB10\\b|rim[0-9]+",
+	        "HTC": "HTC|HTC.*(Sensation|Evo|Vision|Explorer|6800|8100|8900|A7272|S510e|C110e|Legend|Desire|T8282)|APX515CKT|Qtek9090|APA9292KT|HD_mini|Sensation.*Z710e|PG86100|Z715e|Desire.*(A8181|HD)|ADR6200|ADR6400L|ADR6425|001HT|Inspire 4G|Android.*\\bEVO\\b|T-Mobile G1|Z520m",
+	        "Nexus": "Nexus One|Nexus S|Galaxy.*Nexus|Android.*Nexus.*Mobile|Nexus 4|Nexus 5|Nexus 6",
+	        "Dell": "Dell.*Streak|Dell.*Aero|Dell.*Venue|DELL.*Venue Pro|Dell Flash|Dell Smoke|Dell Mini 3iX|XCD28|XCD35|\\b001DL\\b|\\b101DL\\b|\\bGS01\\b",
+	        "Motorola": "Motorola|DROIDX|DROID BIONIC|\\bDroid\\b.*Build|Android.*Xoom|HRI39|MOT-|A1260|A1680|A555|A853|A855|A953|A955|A956|Motorola.*ELECTRIFY|Motorola.*i1|i867|i940|MB200|MB300|MB501|MB502|MB508|MB511|MB520|MB525|MB526|MB611|MB612|MB632|MB810|MB855|MB860|MB861|MB865|MB870|ME501|ME502|ME511|ME525|ME600|ME632|ME722|ME811|ME860|ME863|ME865|MT620|MT710|MT716|MT720|MT810|MT870|MT917|Motorola.*TITANIUM|WX435|WX445|XT300|XT301|XT311|XT316|XT317|XT319|XT320|XT390|XT502|XT530|XT531|XT532|XT535|XT603|XT610|XT611|XT615|XT681|XT701|XT702|XT711|XT720|XT800|XT806|XT860|XT862|XT875|XT882|XT883|XT894|XT901|XT907|XT909|XT910|XT912|XT928|XT926|XT915|XT919|XT925|XT1021|\\bMoto E\\b",
+	        "Samsung": "\\bSamsung\\b|SM-G9250|GT-19300|SGH-I337|BGT-S5230|GT-B2100|GT-B2700|GT-B2710|GT-B3210|GT-B3310|GT-B3410|GT-B3730|GT-B3740|GT-B5510|GT-B5512|GT-B5722|GT-B6520|GT-B7300|GT-B7320|GT-B7330|GT-B7350|GT-B7510|GT-B7722|GT-B7800|GT-C3010|GT-C3011|GT-C3060|GT-C3200|GT-C3212|GT-C3212I|GT-C3262|GT-C3222|GT-C3300|GT-C3300K|GT-C3303|GT-C3303K|GT-C3310|GT-C3322|GT-C3330|GT-C3350|GT-C3500|GT-C3510|GT-C3530|GT-C3630|GT-C3780|GT-C5010|GT-C5212|GT-C6620|GT-C6625|GT-C6712|GT-E1050|GT-E1070|GT-E1075|GT-E1080|GT-E1081|GT-E1085|GT-E1087|GT-E1100|GT-E1107|GT-E1110|GT-E1120|GT-E1125|GT-E1130|GT-E1160|GT-E1170|GT-E1175|GT-E1180|GT-E1182|GT-E1200|GT-E1210|GT-E1225|GT-E1230|GT-E1390|GT-E2100|GT-E2120|GT-E2121|GT-E2152|GT-E2220|GT-E2222|GT-E2230|GT-E2232|GT-E2250|GT-E2370|GT-E2550|GT-E2652|GT-E3210|GT-E3213|GT-I5500|GT-I5503|GT-I5700|GT-I5800|GT-I5801|GT-I6410|GT-I6420|GT-I7110|GT-I7410|GT-I7500|GT-I8000|GT-I8150|GT-I8160|GT-I8190|GT-I8320|GT-I8330|GT-I8350|GT-I8530|GT-I8700|GT-I8703|GT-I8910|GT-I9000|GT-I9001|GT-I9003|GT-I9010|GT-I9020|GT-I9023|GT-I9070|GT-I9082|GT-I9100|GT-I9103|GT-I9220|GT-I9250|GT-I9300|GT-I9305|GT-I9500|GT-I9505|GT-M3510|GT-M5650|GT-M7500|GT-M7600|GT-M7603|GT-M8800|GT-M8910|GT-N7000|GT-S3110|GT-S3310|GT-S3350|GT-S3353|GT-S3370|GT-S3650|GT-S3653|GT-S3770|GT-S3850|GT-S5210|GT-S5220|GT-S5229|GT-S5230|GT-S5233|GT-S5250|GT-S5253|GT-S5260|GT-S5263|GT-S5270|GT-S5300|GT-S5330|GT-S5350|GT-S5360|GT-S5363|GT-S5369|GT-S5380|GT-S5380D|GT-S5560|GT-S5570|GT-S5600|GT-S5603|GT-S5610|GT-S5620|GT-S5660|GT-S5670|GT-S5690|GT-S5750|GT-S5780|GT-S5830|GT-S5839|GT-S6102|GT-S6500|GT-S7070|GT-S7200|GT-S7220|GT-S7230|GT-S7233|GT-S7250|GT-S7500|GT-S7530|GT-S7550|GT-S7562|GT-S7710|GT-S8000|GT-S8003|GT-S8500|GT-S8530|GT-S8600|SCH-A310|SCH-A530|SCH-A570|SCH-A610|SCH-A630|SCH-A650|SCH-A790|SCH-A795|SCH-A850|SCH-A870|SCH-A890|SCH-A930|SCH-A950|SCH-A970|SCH-A990|SCH-I100|SCH-I110|SCH-I400|SCH-I405|SCH-I500|SCH-I510|SCH-I515|SCH-I600|SCH-I730|SCH-I760|SCH-I770|SCH-I830|SCH-I910|SCH-I920|SCH-I959|SCH-LC11|SCH-N150|SCH-N300|SCH-R100|SCH-R300|SCH-R351|SCH-R400|SCH-R410|SCH-T300|SCH-U310|SCH-U320|SCH-U350|SCH-U360|SCH-U365|SCH-U370|SCH-U380|SCH-U410|SCH-U430|SCH-U450|SCH-U460|SCH-U470|SCH-U490|SCH-U540|SCH-U550|SCH-U620|SCH-U640|SCH-U650|SCH-U660|SCH-U700|SCH-U740|SCH-U750|SCH-U810|SCH-U820|SCH-U900|SCH-U940|SCH-U960|SCS-26UC|SGH-A107|SGH-A117|SGH-A127|SGH-A137|SGH-A157|SGH-A167|SGH-A177|SGH-A187|SGH-A197|SGH-A227|SGH-A237|SGH-A257|SGH-A437|SGH-A517|SGH-A597|SGH-A637|SGH-A657|SGH-A667|SGH-A687|SGH-A697|SGH-A707|SGH-A717|SGH-A727|SGH-A737|SGH-A747|SGH-A767|SGH-A777|SGH-A797|SGH-A817|SGH-A827|SGH-A837|SGH-A847|SGH-A867|SGH-A877|SGH-A887|SGH-A897|SGH-A927|SGH-B100|SGH-B130|SGH-B200|SGH-B220|SGH-C100|SGH-C110|SGH-C120|SGH-C130|SGH-C140|SGH-C160|SGH-C170|SGH-C180|SGH-C200|SGH-C207|SGH-C210|SGH-C225|SGH-C230|SGH-C417|SGH-C450|SGH-D307|SGH-D347|SGH-D357|SGH-D407|SGH-D415|SGH-D780|SGH-D807|SGH-D980|SGH-E105|SGH-E200|SGH-E315|SGH-E316|SGH-E317|SGH-E335|SGH-E590|SGH-E635|SGH-E715|SGH-E890|SGH-F300|SGH-F480|SGH-I200|SGH-I300|SGH-I320|SGH-I550|SGH-I577|SGH-I600|SGH-I607|SGH-I617|SGH-I627|SGH-I637|SGH-I677|SGH-I700|SGH-I717|SGH-I727|SGH-i747M|SGH-I777|SGH-I780|SGH-I827|SGH-I847|SGH-I857|SGH-I896|SGH-I897|SGH-I900|SGH-I907|SGH-I917|SGH-I927|SGH-I937|SGH-I997|SGH-J150|SGH-J200|SGH-L170|SGH-L700|SGH-M110|SGH-M150|SGH-M200|SGH-N105|SGH-N500|SGH-N600|SGH-N620|SGH-N625|SGH-N700|SGH-N710|SGH-P107|SGH-P207|SGH-P300|SGH-P310|SGH-P520|SGH-P735|SGH-P777|SGH-Q105|SGH-R210|SGH-R220|SGH-R225|SGH-S105|SGH-S307|SGH-T109|SGH-T119|SGH-T139|SGH-T209|SGH-T219|SGH-T229|SGH-T239|SGH-T249|SGH-T259|SGH-T309|SGH-T319|SGH-T329|SGH-T339|SGH-T349|SGH-T359|SGH-T369|SGH-T379|SGH-T409|SGH-T429|SGH-T439|SGH-T459|SGH-T469|SGH-T479|SGH-T499|SGH-T509|SGH-T519|SGH-T539|SGH-T559|SGH-T589|SGH-T609|SGH-T619|SGH-T629|SGH-T639|SGH-T659|SGH-T669|SGH-T679|SGH-T709|SGH-T719|SGH-T729|SGH-T739|SGH-T746|SGH-T749|SGH-T759|SGH-T769|SGH-T809|SGH-T819|SGH-T839|SGH-T919|SGH-T929|SGH-T939|SGH-T959|SGH-T989|SGH-U100|SGH-U200|SGH-U800|SGH-V205|SGH-V206|SGH-X100|SGH-X105|SGH-X120|SGH-X140|SGH-X426|SGH-X427|SGH-X475|SGH-X495|SGH-X497|SGH-X507|SGH-X600|SGH-X610|SGH-X620|SGH-X630|SGH-X700|SGH-X820|SGH-X890|SGH-Z130|SGH-Z150|SGH-Z170|SGH-ZX10|SGH-ZX20|SHW-M110|SPH-A120|SPH-A400|SPH-A420|SPH-A460|SPH-A500|SPH-A560|SPH-A600|SPH-A620|SPH-A660|SPH-A700|SPH-A740|SPH-A760|SPH-A790|SPH-A800|SPH-A820|SPH-A840|SPH-A880|SPH-A900|SPH-A940|SPH-A960|SPH-D600|SPH-D700|SPH-D710|SPH-D720|SPH-I300|SPH-I325|SPH-I330|SPH-I350|SPH-I500|SPH-I600|SPH-I700|SPH-L700|SPH-M100|SPH-M220|SPH-M240|SPH-M300|SPH-M305|SPH-M320|SPH-M330|SPH-M350|SPH-M360|SPH-M370|SPH-M380|SPH-M510|SPH-M540|SPH-M550|SPH-M560|SPH-M570|SPH-M580|SPH-M610|SPH-M620|SPH-M630|SPH-M800|SPH-M810|SPH-M850|SPH-M900|SPH-M910|SPH-M920|SPH-M930|SPH-N100|SPH-N200|SPH-N240|SPH-N300|SPH-N400|SPH-Z400|SWC-E100|SCH-i909|GT-N7100|GT-N7105|SCH-I535|SM-N900A|SGH-I317|SGH-T999L|GT-S5360B|GT-I8262|GT-S6802|GT-S6312|GT-S6310|GT-S5312|GT-S5310|GT-I9105|GT-I8510|GT-S6790N|SM-G7105|SM-N9005|GT-S5301|GT-I9295|GT-I9195|SM-C101|GT-S7392|GT-S7560|GT-B7610|GT-I5510|GT-S7582|GT-S7530E|GT-I8750|SM-G9006V|SM-G9008V|SM-G9009D|SM-G900A|SM-G900D|SM-G900F|SM-G900H|SM-G900I|SM-G900J|SM-G900K|SM-G900L|SM-G900M|SM-G900P|SM-G900R4|SM-G900S|SM-G900T|SM-G900V|SM-G900W8|SHV-E160K|SCH-P709|SCH-P729|SM-T2558|GT-I9205|SM-G9350|SM-J120F",
+	        "LG": "\\bLG\\b;|LG[- ]?(C800|C900|E400|E610|E900|E-900|F160|F180K|F180L|F180S|730|855|L160|LS740|LS840|LS970|LU6200|MS690|MS695|MS770|MS840|MS870|MS910|P500|P700|P705|VM696|AS680|AS695|AX840|C729|E970|GS505|272|C395|E739BK|E960|L55C|L75C|LS696|LS860|P769BK|P350|P500|P509|P870|UN272|US730|VS840|VS950|LN272|LN510|LS670|LS855|LW690|MN270|MN510|P509|P769|P930|UN200|UN270|UN510|UN610|US670|US740|US760|UX265|UX840|VN271|VN530|VS660|VS700|VS740|VS750|VS910|VS920|VS930|VX9200|VX11000|AX840A|LW770|P506|P925|P999|E612|D955|D802|MS323)",
+	        "Sony": "SonyST|SonyLT|SonyEricsson|SonyEricssonLT15iv|LT18i|E10i|LT28h|LT26w|SonyEricssonMT27i|C5303|C6902|C6903|C6906|C6943|D2533",
+	        "Asus": "Asus.*Galaxy|PadFone.*Mobile",
+	        "NokiaLumia": "Lumia [0-9]{3,4}",
+	        "Micromax": "Micromax.*\\b(A210|A92|A88|A72|A111|A110Q|A115|A116|A110|A90S|A26|A51|A35|A54|A25|A27|A89|A68|A65|A57|A90)\\b",
+	        "Palm": "PalmSource|Palm",
+	        "Vertu": "Vertu|Vertu.*Ltd|Vertu.*Ascent|Vertu.*Ayxta|Vertu.*Constellation(F|Quest)?|Vertu.*Monika|Vertu.*Signature",
+	        "Pantech": "PANTECH|IM-A850S|IM-A840S|IM-A830L|IM-A830K|IM-A830S|IM-A820L|IM-A810K|IM-A810S|IM-A800S|IM-T100K|IM-A725L|IM-A780L|IM-A775C|IM-A770K|IM-A760S|IM-A750K|IM-A740S|IM-A730S|IM-A720L|IM-A710K|IM-A690L|IM-A690S|IM-A650S|IM-A630K|IM-A600S|VEGA PTL21|PT003|P8010|ADR910L|P6030|P6020|P9070|P4100|P9060|P5000|CDM8992|TXT8045|ADR8995|IS11PT|P2030|P6010|P8000|PT002|IS06|CDM8999|P9050|PT001|TXT8040|P2020|P9020|P2000|P7040|P7000|C790",
+	        "Fly": "IQ230|IQ444|IQ450|IQ440|IQ442|IQ441|IQ245|IQ256|IQ236|IQ255|IQ235|IQ245|IQ275|IQ240|IQ285|IQ280|IQ270|IQ260|IQ250",
+	        "Wiko": "KITE 4G|HIGHWAY|GETAWAY|STAIRWAY|DARKSIDE|DARKFULL|DARKNIGHT|DARKMOON|SLIDE|WAX 4G|RAINBOW|BLOOM|SUNSET|GOA(?!nna)|LENNY|BARRY|IGGY|OZZY|CINK FIVE|CINK PEAX|CINK PEAX 2|CINK SLIM|CINK SLIM 2|CINK +|CINK KING|CINK PEAX|CINK SLIM|SUBLIM",
+	        "iMobile": "i-mobile (IQ|i-STYLE|idea|ZAA|Hitz)",
+	        "SimValley": "\\b(SP-80|XT-930|SX-340|XT-930|SX-310|SP-360|SP60|SPT-800|SP-120|SPT-800|SP-140|SPX-5|SPX-8|SP-100|SPX-8|SPX-12)\\b",
+	        "Wolfgang": "AT-B24D|AT-AS50HD|AT-AS40W|AT-AS55HD|AT-AS45q2|AT-B26D|AT-AS50Q",
+	        "Alcatel": "Alcatel",
+	        "Nintendo": "Nintendo 3DS",
+	        "Amoi": "Amoi",
+	        "INQ": "INQ",
+	        "GenericPhone": "Tapatalk|PDA;|SAGEM|\\bmmp\\b|pocket|\\bpsp\\b|symbian|Smartphone|smartfon|treo|up.browser|up.link|vodafone|\\bwap\\b|nokia|Series40|Series60|S60|SonyEricsson|N900|MAUI.*WAP.*Browser"
+	    },
+	    "tablets": {
+	        "iPad": "iPad|iPad.*Mobile",
+	        "NexusTablet": "Android.*Nexus[\\s]+(7|9|10)",
+	        "SamsungTablet": "SAMSUNG.*Tablet|Galaxy.*Tab|SC-01C|GT-P1000|GT-P1003|GT-P1010|GT-P3105|GT-P6210|GT-P6800|GT-P6810|GT-P7100|GT-P7300|GT-P7310|GT-P7500|GT-P7510|SCH-I800|SCH-I815|SCH-I905|SGH-I957|SGH-I987|SGH-T849|SGH-T859|SGH-T869|SPH-P100|GT-P3100|GT-P3108|GT-P3110|GT-P5100|GT-P5110|GT-P6200|GT-P7320|GT-P7511|GT-N8000|GT-P8510|SGH-I497|SPH-P500|SGH-T779|SCH-I705|SCH-I915|GT-N8013|GT-P3113|GT-P5113|GT-P8110|GT-N8010|GT-N8005|GT-N8020|GT-P1013|GT-P6201|GT-P7501|GT-N5100|GT-N5105|GT-N5110|SHV-E140K|SHV-E140L|SHV-E140S|SHV-E150S|SHV-E230K|SHV-E230L|SHV-E230S|SHW-M180K|SHW-M180L|SHW-M180S|SHW-M180W|SHW-M300W|SHW-M305W|SHW-M380K|SHW-M380S|SHW-M380W|SHW-M430W|SHW-M480K|SHW-M480S|SHW-M480W|SHW-M485W|SHW-M486W|SHW-M500W|GT-I9228|SCH-P739|SCH-I925|GT-I9200|GT-P5200|GT-P5210|GT-P5210X|SM-T311|SM-T310|SM-T310X|SM-T210|SM-T210R|SM-T211|SM-P600|SM-P601|SM-P605|SM-P900|SM-P901|SM-T217|SM-T217A|SM-T217S|SM-P6000|SM-T3100|SGH-I467|XE500|SM-T110|GT-P5220|GT-I9200X|GT-N5110X|GT-N5120|SM-P905|SM-T111|SM-T2105|SM-T315|SM-T320|SM-T320X|SM-T321|SM-T520|SM-T525|SM-T530NU|SM-T230NU|SM-T330NU|SM-T900|XE500T1C|SM-P605V|SM-P905V|SM-T337V|SM-T537V|SM-T707V|SM-T807V|SM-P600X|SM-P900X|SM-T210X|SM-T230|SM-T230X|SM-T325|GT-P7503|SM-T531|SM-T330|SM-T530|SM-T705|SM-T705C|SM-T535|SM-T331|SM-T800|SM-T700|SM-T537|SM-T807|SM-P907A|SM-T337A|SM-T537A|SM-T707A|SM-T807A|SM-T237|SM-T807P|SM-P607T|SM-T217T|SM-T337T|SM-T807T|SM-T116NQ|SM-P550|SM-T350|SM-T550|SM-T9000|SM-P9000|SM-T705Y|SM-T805|GT-P3113|SM-T710|SM-T810|SM-T815|SM-T360|SM-T533|SM-T113|SM-T335|SM-T715|SM-T560|SM-T670|SM-T677|SM-T377|SM-T567|SM-T357T|SM-T555|SM-T561|SM-T713|SM-T719|SM-T813|SM-T819|SM-T580|SM-T355Y|SM-T280",
+	        "Kindle": "Kindle|Silk.*Accelerated|Android.*\\b(KFOT|KFTT|KFJWI|KFJWA|KFOTE|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|WFJWAE|KFSAWA|KFSAWI|KFASWI|KFARWI)\\b",
+	        "SurfaceTablet": "Windows NT [0-9.]+; ARM;.*(Tablet|ARMBJS)",
+	        "HPTablet": "HP Slate (7|8|10)|HP ElitePad 900|hp-tablet|EliteBook.*Touch|HP 8|Slate 21|HP SlateBook 10",
+	        "AsusTablet": "^.*PadFone((?!Mobile).)*$|Transformer|TF101|TF101G|TF300T|TF300TG|TF300TL|TF700T|TF700KL|TF701T|TF810C|ME171|ME301T|ME302C|ME371MG|ME370T|ME372MG|ME172V|ME173X|ME400C|Slider SL101|\\bK00F\\b|\\bK00C\\b|\\bK00E\\b|\\bK00L\\b|TX201LA|ME176C|ME102A|\\bM80TA\\b|ME372CL|ME560CG|ME372CG|ME302KL| K010 | K011 | K017 | K01E |ME572C|ME103K|ME170C|ME171C|\\bME70C\\b|ME581C|ME581CL|ME8510C|ME181C|P01Y|PO1MA|P01Z",
+	        "BlackBerryTablet": "PlayBook|RIM Tablet",
+	        "HTCtablet": "HTC_Flyer_P512|HTC Flyer|HTC Jetstream|HTC-P715a|HTC EVO View 4G|PG41200|PG09410",
+	        "MotorolaTablet": "xoom|sholest|MZ615|MZ605|MZ505|MZ601|MZ602|MZ603|MZ604|MZ606|MZ607|MZ608|MZ609|MZ615|MZ616|MZ617",
+	        "NookTablet": "Android.*Nook|NookColor|nook browser|BNRV200|BNRV200A|BNTV250|BNTV250A|BNTV400|BNTV600|LogicPD Zoom2",
+	        "AcerTablet": "Android.*; \\b(A100|A101|A110|A200|A210|A211|A500|A501|A510|A511|A700|A701|W500|W500P|W501|W501P|W510|W511|W700|G100|G100W|B1-A71|B1-710|B1-711|A1-810|A1-811|A1-830)\\b|W3-810|\\bA3-A10\\b|\\bA3-A11\\b|\\bA3-A20\\b|\\bA3-A30",
+	        "ToshibaTablet": "Android.*(AT100|AT105|AT200|AT205|AT270|AT275|AT300|AT305|AT1S5|AT500|AT570|AT700|AT830)|TOSHIBA.*FOLIO",
+	        "LGTablet": "\\bL-06C|LG-V909|LG-V900|LG-V700|LG-V510|LG-V500|LG-V410|LG-V400|LG-VK810\\b",
+	        "FujitsuTablet": "Android.*\\b(F-01D|F-02F|F-05E|F-10D|M532|Q572)\\b",
+	        "PrestigioTablet": "PMP3170B|PMP3270B|PMP3470B|PMP7170B|PMP3370B|PMP3570C|PMP5870C|PMP3670B|PMP5570C|PMP5770D|PMP3970B|PMP3870C|PMP5580C|PMP5880D|PMP5780D|PMP5588C|PMP7280C|PMP7280C3G|PMP7280|PMP7880D|PMP5597D|PMP5597|PMP7100D|PER3464|PER3274|PER3574|PER3884|PER5274|PER5474|PMP5097CPRO|PMP5097|PMP7380D|PMP5297C|PMP5297C_QUAD|PMP812E|PMP812E3G|PMP812F|PMP810E|PMP880TD|PMT3017|PMT3037|PMT3047|PMT3057|PMT7008|PMT5887|PMT5001|PMT5002",
+	        "LenovoTablet": "Lenovo TAB|Idea(Tab|Pad)( A1|A10| K1|)|ThinkPad([ ]+)?Tablet|YT3-X90L|YT3-X90F|YT3-X90X|Lenovo.*(S2109|S2110|S5000|S6000|K3011|A3000|A3500|A1000|A2107|A2109|A1107|A5500|A7600|B6000|B8000|B8080)(-|)(FL|F|HV|H|)",
+	        "DellTablet": "Venue 11|Venue 8|Venue 7|Dell Streak 10|Dell Streak 7",
+	        "YarvikTablet": "Android.*\\b(TAB210|TAB211|TAB224|TAB250|TAB260|TAB264|TAB310|TAB360|TAB364|TAB410|TAB411|TAB420|TAB424|TAB450|TAB460|TAB461|TAB464|TAB465|TAB467|TAB468|TAB07-100|TAB07-101|TAB07-150|TAB07-151|TAB07-152|TAB07-200|TAB07-201-3G|TAB07-210|TAB07-211|TAB07-212|TAB07-214|TAB07-220|TAB07-400|TAB07-485|TAB08-150|TAB08-200|TAB08-201-3G|TAB08-201-30|TAB09-100|TAB09-211|TAB09-410|TAB10-150|TAB10-201|TAB10-211|TAB10-400|TAB10-410|TAB13-201|TAB274EUK|TAB275EUK|TAB374EUK|TAB462EUK|TAB474EUK|TAB9-200)\\b",
+	        "MedionTablet": "Android.*\\bOYO\\b|LIFE.*(P9212|P9514|P9516|S9512)|LIFETAB",
+	        "ArnovaTablet": "97G4|AN10G2|AN7bG3|AN7fG3|AN8G3|AN8cG3|AN7G3|AN9G3|AN7dG3|AN7dG3ST|AN7dG3ChildPad|AN10bG3|AN10bG3DT|AN9G2",
+	        "IntensoTablet": "INM8002KP|INM1010FP|INM805ND|Intenso Tab|TAB1004",
+	        "IRUTablet": "M702pro",
+	        "MegafonTablet": "MegaFon V9|\\bZTE V9\\b|Android.*\\bMT7A\\b",
+	        "EbodaTablet": "E-Boda (Supreme|Impresspeed|Izzycomm|Essential)",
+	        "AllViewTablet": "Allview.*(Viva|Alldro|City|Speed|All TV|Frenzy|Quasar|Shine|TX1|AX1|AX2)",
+	        "ArchosTablet": "\\b(101G9|80G9|A101IT)\\b|Qilive 97R|Archos5|\\bARCHOS (70|79|80|90|97|101|FAMILYPAD|)(b|)(G10| Cobalt| TITANIUM(HD|)| Xenon| Neon|XSK| 2| XS 2| PLATINUM| CARBON|GAMEPAD)\\b",
+	        "AinolTablet": "NOVO7|NOVO8|NOVO10|Novo7Aurora|Novo7Basic|NOVO7PALADIN|novo9-Spark",
+	        "NokiaLumiaTablet": "Lumia 2520",
+	        "SonyTablet": "Sony.*Tablet|Xperia Tablet|Sony Tablet S|SO-03E|SGPT12|SGPT13|SGPT114|SGPT121|SGPT122|SGPT123|SGPT111|SGPT112|SGPT113|SGPT131|SGPT132|SGPT133|SGPT211|SGPT212|SGPT213|SGP311|SGP312|SGP321|EBRD1101|EBRD1102|EBRD1201|SGP351|SGP341|SGP511|SGP512|SGP521|SGP541|SGP551|SGP621|SGP612|SOT31",
+	        "PhilipsTablet": "\\b(PI2010|PI3000|PI3100|PI3105|PI3110|PI3205|PI3210|PI3900|PI4010|PI7000|PI7100)\\b",
+	        "CubeTablet": "Android.*(K8GT|U9GT|U10GT|U16GT|U17GT|U18GT|U19GT|U20GT|U23GT|U30GT)|CUBE U8GT",
+	        "CobyTablet": "MID1042|MID1045|MID1125|MID1126|MID7012|MID7014|MID7015|MID7034|MID7035|MID7036|MID7042|MID7048|MID7127|MID8042|MID8048|MID8127|MID9042|MID9740|MID9742|MID7022|MID7010",
+	        "MIDTablet": "M9701|M9000|M9100|M806|M1052|M806|T703|MID701|MID713|MID710|MID727|MID760|MID830|MID728|MID933|MID125|MID810|MID732|MID120|MID930|MID800|MID731|MID900|MID100|MID820|MID735|MID980|MID130|MID833|MID737|MID960|MID135|MID860|MID736|MID140|MID930|MID835|MID733|MID4X10",
+	        "MSITablet": "MSI \\b(Primo 73K|Primo 73L|Primo 81L|Primo 77|Primo 93|Primo 75|Primo 76|Primo 73|Primo 81|Primo 91|Primo 90|Enjoy 71|Enjoy 7|Enjoy 10)\\b",
+	        "SMiTTablet": "Android.*(\\bMID\\b|MID-560|MTV-T1200|MTV-PND531|MTV-P1101|MTV-PND530)",
+	        "RockChipTablet": "Android.*(RK2818|RK2808A|RK2918|RK3066)|RK2738|RK2808A",
+	        "FlyTablet": "IQ310|Fly Vision",
+	        "bqTablet": "Android.*(bq)?.*(Elcano|Curie|Edison|Maxwell|Kepler|Pascal|Tesla|Hypatia|Platon|Newton|Livingstone|Cervantes|Avant|Aquaris [E|M]10)|Maxwell.*Lite|Maxwell.*Plus",
+	        "HuaweiTablet": "MediaPad|MediaPad 7 Youth|IDEOS S7|S7-201c|S7-202u|S7-101|S7-103|S7-104|S7-105|S7-106|S7-201|S7-Slim",
+	        "NecTablet": "\\bN-06D|\\bN-08D",
+	        "PantechTablet": "Pantech.*P4100",
+	        "BronchoTablet": "Broncho.*(N701|N708|N802|a710)",
+	        "VersusTablet": "TOUCHPAD.*[78910]|\\bTOUCHTAB\\b",
+	        "ZyncTablet": "z1000|Z99 2G|z99|z930|z999|z990|z909|Z919|z900",
+	        "PositivoTablet": "TB07STA|TB10STA|TB07FTA|TB10FTA",
+	        "NabiTablet": "Android.*\\bNabi",
+	        "KoboTablet": "Kobo Touch|\\bK080\\b|\\bVox\\b Build|\\bArc\\b Build",
+	        "DanewTablet": "DSlide.*\\b(700|701R|702|703R|704|802|970|971|972|973|974|1010|1012)\\b",
+	        "TexetTablet": "NaviPad|TB-772A|TM-7045|TM-7055|TM-9750|TM-7016|TM-7024|TM-7026|TM-7041|TM-7043|TM-7047|TM-8041|TM-9741|TM-9747|TM-9748|TM-9751|TM-7022|TM-7021|TM-7020|TM-7011|TM-7010|TM-7023|TM-7025|TM-7037W|TM-7038W|TM-7027W|TM-9720|TM-9725|TM-9737W|TM-1020|TM-9738W|TM-9740|TM-9743W|TB-807A|TB-771A|TB-727A|TB-725A|TB-719A|TB-823A|TB-805A|TB-723A|TB-715A|TB-707A|TB-705A|TB-709A|TB-711A|TB-890HD|TB-880HD|TB-790HD|TB-780HD|TB-770HD|TB-721HD|TB-710HD|TB-434HD|TB-860HD|TB-840HD|TB-760HD|TB-750HD|TB-740HD|TB-730HD|TB-722HD|TB-720HD|TB-700HD|TB-500HD|TB-470HD|TB-431HD|TB-430HD|TB-506|TB-504|TB-446|TB-436|TB-416|TB-146SE|TB-126SE",
+	        "PlaystationTablet": "Playstation.*(Portable|Vita)",
+	        "TrekstorTablet": "ST10416-1|VT10416-1|ST70408-1|ST702xx-1|ST702xx-2|ST80208|ST97216|ST70104-2|VT10416-2|ST10216-2A|SurfTab",
+	        "PyleAudioTablet": "\\b(PTBL10CEU|PTBL10C|PTBL72BC|PTBL72BCEU|PTBL7CEU|PTBL7C|PTBL92BC|PTBL92BCEU|PTBL9CEU|PTBL9CUK|PTBL9C)\\b",
+	        "AdvanTablet": "Android.* \\b(E3A|T3X|T5C|T5B|T3E|T3C|T3B|T1J|T1F|T2A|T1H|T1i|E1C|T1-E|T5-A|T4|E1-B|T2Ci|T1-B|T1-D|O1-A|E1-A|T1-A|T3A|T4i)\\b ",
+	        "DanyTechTablet": "Genius Tab G3|Genius Tab S2|Genius Tab Q3|Genius Tab G4|Genius Tab Q4|Genius Tab G-II|Genius TAB GII|Genius TAB GIII|Genius Tab S1",
+	        "GalapadTablet": "Android.*\\bG1\\b",
+	        "MicromaxTablet": "Funbook|Micromax.*\\b(P250|P560|P360|P362|P600|P300|P350|P500|P275)\\b",
+	        "KarbonnTablet": "Android.*\\b(A39|A37|A34|ST8|ST10|ST7|Smart Tab3|Smart Tab2)\\b",
+	        "AllFineTablet": "Fine7 Genius|Fine7 Shine|Fine7 Air|Fine8 Style|Fine9 More|Fine10 Joy|Fine11 Wide",
+	        "PROSCANTablet": "\\b(PEM63|PLT1023G|PLT1041|PLT1044|PLT1044G|PLT1091|PLT4311|PLT4311PL|PLT4315|PLT7030|PLT7033|PLT7033D|PLT7035|PLT7035D|PLT7044K|PLT7045K|PLT7045KB|PLT7071KG|PLT7072|PLT7223G|PLT7225G|PLT7777G|PLT7810K|PLT7849G|PLT7851G|PLT7852G|PLT8015|PLT8031|PLT8034|PLT8036|PLT8080K|PLT8082|PLT8088|PLT8223G|PLT8234G|PLT8235G|PLT8816K|PLT9011|PLT9045K|PLT9233G|PLT9735|PLT9760G|PLT9770G)\\b",
+	        "YONESTablet": "BQ1078|BC1003|BC1077|RK9702|BC9730|BC9001|IT9001|BC7008|BC7010|BC708|BC728|BC7012|BC7030|BC7027|BC7026",
+	        "ChangJiaTablet": "TPC7102|TPC7103|TPC7105|TPC7106|TPC7107|TPC7201|TPC7203|TPC7205|TPC7210|TPC7708|TPC7709|TPC7712|TPC7110|TPC8101|TPC8103|TPC8105|TPC8106|TPC8203|TPC8205|TPC8503|TPC9106|TPC9701|TPC97101|TPC97103|TPC97105|TPC97106|TPC97111|TPC97113|TPC97203|TPC97603|TPC97809|TPC97205|TPC10101|TPC10103|TPC10106|TPC10111|TPC10203|TPC10205|TPC10503",
+	        "GUTablet": "TX-A1301|TX-M9002|Q702|kf026",
+	        "PointOfViewTablet": "TAB-P506|TAB-navi-7-3G-M|TAB-P517|TAB-P-527|TAB-P701|TAB-P703|TAB-P721|TAB-P731N|TAB-P741|TAB-P825|TAB-P905|TAB-P925|TAB-PR945|TAB-PL1015|TAB-P1025|TAB-PI1045|TAB-P1325|TAB-PROTAB[0-9]+|TAB-PROTAB25|TAB-PROTAB26|TAB-PROTAB27|TAB-PROTAB26XL|TAB-PROTAB2-IPS9|TAB-PROTAB30-IPS9|TAB-PROTAB25XXL|TAB-PROTAB26-IPS10|TAB-PROTAB30-IPS10",
+	        "OvermaxTablet": "OV-(SteelCore|NewBase|Basecore|Baseone|Exellen|Quattor|EduTab|Solution|ACTION|BasicTab|TeddyTab|MagicTab|Stream|TB-08|TB-09)",
+	        "HCLTablet": "HCL.*Tablet|Connect-3G-2.0|Connect-2G-2.0|ME Tablet U1|ME Tablet U2|ME Tablet G1|ME Tablet X1|ME Tablet Y2|ME Tablet Sync",
+	        "DPSTablet": "DPS Dream 9|DPS Dual 7",
+	        "VistureTablet": "V97 HD|i75 3G|Visture V4( HD)?|Visture V5( HD)?|Visture V10",
+	        "CrestaTablet": "CTP(-)?810|CTP(-)?818|CTP(-)?828|CTP(-)?838|CTP(-)?888|CTP(-)?978|CTP(-)?980|CTP(-)?987|CTP(-)?988|CTP(-)?989",
+	        "MediatekTablet": "\\bMT8125|MT8389|MT8135|MT8377\\b",
+	        "ConcordeTablet": "Concorde([ ]+)?Tab|ConCorde ReadMan",
+	        "GoCleverTablet": "GOCLEVER TAB|A7GOCLEVER|M1042|M7841|M742|R1042BK|R1041|TAB A975|TAB A7842|TAB A741|TAB A741L|TAB M723G|TAB M721|TAB A1021|TAB I921|TAB R721|TAB I720|TAB T76|TAB R70|TAB R76.2|TAB R106|TAB R83.2|TAB M813G|TAB I721|GCTA722|TAB I70|TAB I71|TAB S73|TAB R73|TAB R74|TAB R93|TAB R75|TAB R76.1|TAB A73|TAB A93|TAB A93.2|TAB T72|TAB R83|TAB R974|TAB R973|TAB A101|TAB A103|TAB A104|TAB A104.2|R105BK|M713G|A972BK|TAB A971|TAB R974.2|TAB R104|TAB R83.3|TAB A1042",
+	        "ModecomTablet": "FreeTAB 9000|FreeTAB 7.4|FreeTAB 7004|FreeTAB 7800|FreeTAB 2096|FreeTAB 7.5|FreeTAB 1014|FreeTAB 1001 |FreeTAB 8001|FreeTAB 9706|FreeTAB 9702|FreeTAB 7003|FreeTAB 7002|FreeTAB 1002|FreeTAB 7801|FreeTAB 1331|FreeTAB 1004|FreeTAB 8002|FreeTAB 8014|FreeTAB 9704|FreeTAB 1003",
+	        "VoninoTablet": "\\b(Argus[ _]?S|Diamond[ _]?79HD|Emerald[ _]?78E|Luna[ _]?70C|Onyx[ _]?S|Onyx[ _]?Z|Orin[ _]?HD|Orin[ _]?S|Otis[ _]?S|SpeedStar[ _]?S|Magnet[ _]?M9|Primus[ _]?94[ _]?3G|Primus[ _]?94HD|Primus[ _]?QS|Android.*\\bQ8\\b|Sirius[ _]?EVO[ _]?QS|Sirius[ _]?QS|Spirit[ _]?S)\\b",
+	        "ECSTablet": "V07OT2|TM105A|S10OT1|TR10CS1",
+	        "StorexTablet": "eZee[_']?(Tab|Go)[0-9]+|TabLC7|Looney Tunes Tab",
+	        "VodafoneTablet": "SmartTab([ ]+)?[0-9]+|SmartTabII10|SmartTabII7|VF-1497",
+	        "EssentielBTablet": "Smart[ ']?TAB[ ]+?[0-9]+|Family[ ']?TAB2",
+	        "RossMoorTablet": "RM-790|RM-997|RMD-878G|RMD-974R|RMT-705A|RMT-701|RME-601|RMT-501|RMT-711",
+	        "iMobileTablet": "i-mobile i-note",
+	        "TolinoTablet": "tolino tab [0-9.]+|tolino shine",
+	        "AudioSonicTablet": "\\bC-22Q|T7-QC|T-17B|T-17P\\b",
+	        "AMPETablet": "Android.* A78 ",
+	        "SkkTablet": "Android.* (SKYPAD|PHOENIX|CYCLOPS)",
+	        "TecnoTablet": "TECNO P9",
+	        "JXDTablet": "Android.* \\b(F3000|A3300|JXD5000|JXD3000|JXD2000|JXD300B|JXD300|S5800|S7800|S602b|S5110b|S7300|S5300|S602|S603|S5100|S5110|S601|S7100a|P3000F|P3000s|P101|P200s|P1000m|P200m|P9100|P1000s|S6600b|S908|P1000|P300|S18|S6600|S9100)\\b",
+	        "iJoyTablet": "Tablet (Spirit 7|Essentia|Galatea|Fusion|Onix 7|Landa|Titan|Scooby|Deox|Stella|Themis|Argon|Unique 7|Sygnus|Hexen|Finity 7|Cream|Cream X2|Jade|Neon 7|Neron 7|Kandy|Scape|Saphyr 7|Rebel|Biox|Rebel|Rebel 8GB|Myst|Draco 7|Myst|Tab7-004|Myst|Tadeo Jones|Tablet Boing|Arrow|Draco Dual Cam|Aurix|Mint|Amity|Revolution|Finity 9|Neon 9|T9w|Amity 4GB Dual Cam|Stone 4GB|Stone 8GB|Andromeda|Silken|X2|Andromeda II|Halley|Flame|Saphyr 9,7|Touch 8|Planet|Triton|Unique 10|Hexen 10|Memphis 4GB|Memphis 8GB|Onix 10)",
+	        "FX2Tablet": "FX2 PAD7|FX2 PAD10",
+	        "XoroTablet": "KidsPAD 701|PAD[ ]?712|PAD[ ]?714|PAD[ ]?716|PAD[ ]?717|PAD[ ]?718|PAD[ ]?720|PAD[ ]?721|PAD[ ]?722|PAD[ ]?790|PAD[ ]?792|PAD[ ]?900|PAD[ ]?9715D|PAD[ ]?9716DR|PAD[ ]?9718DR|PAD[ ]?9719QR|PAD[ ]?9720QR|TelePAD1030|Telepad1032|TelePAD730|TelePAD731|TelePAD732|TelePAD735Q|TelePAD830|TelePAD9730|TelePAD795|MegaPAD 1331|MegaPAD 1851|MegaPAD 2151",
+	        "ViewsonicTablet": "ViewPad 10pi|ViewPad 10e|ViewPad 10s|ViewPad E72|ViewPad7|ViewPad E100|ViewPad 7e|ViewSonic VB733|VB100a",
+	        "OdysTablet": "LOOX|XENO10|ODYS[ -](Space|EVO|Xpress|NOON)|\\bXELIO\\b|Xelio10Pro|XELIO7PHONETAB|XELIO10EXTREME|XELIOPT2|NEO_QUAD10",
+	        "CaptivaTablet": "CAPTIVA PAD",
+	        "IconbitTablet": "NetTAB|NT-3702|NT-3702S|NT-3702S|NT-3603P|NT-3603P|NT-0704S|NT-0704S|NT-3805C|NT-3805C|NT-0806C|NT-0806C|NT-0909T|NT-0909T|NT-0907S|NT-0907S|NT-0902S|NT-0902S",
+	        "TeclastTablet": "T98 4G|\\bP80\\b|\\bX90HD\\b|X98 Air|X98 Air 3G|\\bX89\\b|P80 3G|\\bX80h\\b|P98 Air|\\bX89HD\\b|P98 3G|\\bP90HD\\b|P89 3G|X98 3G|\\bP70h\\b|P79HD 3G|G18d 3G|\\bP79HD\\b|\\bP89s\\b|\\bA88\\b|\\bP10HD\\b|\\bP19HD\\b|G18 3G|\\bP78HD\\b|\\bA78\\b|\\bP75\\b|G17s 3G|G17h 3G|\\bP85t\\b|\\bP90\\b|\\bP11\\b|\\bP98t\\b|\\bP98HD\\b|\\bG18d\\b|\\bP85s\\b|\\bP11HD\\b|\\bP88s\\b|\\bA80HD\\b|\\bA80se\\b|\\bA10h\\b|\\bP89\\b|\\bP78s\\b|\\bG18\\b|\\bP85\\b|\\bA70h\\b|\\bA70\\b|\\bG17\\b|\\bP18\\b|\\bA80s\\b|\\bA11s\\b|\\bP88HD\\b|\\bA80h\\b|\\bP76s\\b|\\bP76h\\b|\\bP98\\b|\\bA10HD\\b|\\bP78\\b|\\bP88\\b|\\bA11\\b|\\bA10t\\b|\\bP76a\\b|\\bP76t\\b|\\bP76e\\b|\\bP85HD\\b|\\bP85a\\b|\\bP86\\b|\\bP75HD\\b|\\bP76v\\b|\\bA12\\b|\\bP75a\\b|\\bA15\\b|\\bP76Ti\\b|\\bP81HD\\b|\\bA10\\b|\\bT760VE\\b|\\bT720HD\\b|\\bP76\\b|\\bP73\\b|\\bP71\\b|\\bP72\\b|\\bT720SE\\b|\\bC520Ti\\b|\\bT760\\b|\\bT720VE\\b|T720-3GE|T720-WiFi",
+	        "OndaTablet": "\\b(V975i|Vi30|VX530|V701|Vi60|V701s|Vi50|V801s|V719|Vx610w|VX610W|V819i|Vi10|VX580W|Vi10|V711s|V813|V811|V820w|V820|Vi20|V711|VI30W|V712|V891w|V972|V819w|V820w|Vi60|V820w|V711|V813s|V801|V819|V975s|V801|V819|V819|V818|V811|V712|V975m|V101w|V961w|V812|V818|V971|V971s|V919|V989|V116w|V102w|V973|Vi40)\\b[\\s]+",
+	        "JaytechTablet": "TPC-PA762",
+	        "BlaupunktTablet": "Endeavour 800NG|Endeavour 1010",
+	        "DigmaTablet": "\\b(iDx10|iDx9|iDx8|iDx7|iDxD7|iDxD8|iDsQ8|iDsQ7|iDsQ8|iDsD10|iDnD7|3TS804H|iDsQ11|iDj7|iDs10)\\b",
+	        "EvolioTablet": "ARIA_Mini_wifi|Aria[ _]Mini|Evolio X10|Evolio X7|Evolio X8|\\bEvotab\\b|\\bNeura\\b",
+	        "LavaTablet": "QPAD E704|\\bIvoryS\\b|E-TAB IVORY|\\bE-TAB\\b",
+	        "AocTablet": "MW0811|MW0812|MW0922|MTK8382|MW1031|MW0831|MW0821|MW0931|MW0712",
+	        "MpmanTablet": "MP11 OCTA|MP10 OCTA|MPQC1114|MPQC1004|MPQC994|MPQC974|MPQC973|MPQC804|MPQC784|MPQC780|\\bMPG7\\b|MPDCG75|MPDCG71|MPDC1006|MP101DC|MPDC9000|MPDC905|MPDC706HD|MPDC706|MPDC705|MPDC110|MPDC100|MPDC99|MPDC97|MPDC88|MPDC8|MPDC77|MP709|MID701|MID711|MID170|MPDC703|MPQC1010",
+	        "CelkonTablet": "CT695|CT888|CT[\\s]?910|CT7 Tab|CT9 Tab|CT3 Tab|CT2 Tab|CT1 Tab|C820|C720|\\bCT-1\\b",
+	        "WolderTablet": "miTab \\b(DIAMOND|SPACE|BROOKLYN|NEO|FLY|MANHATTAN|FUNK|EVOLUTION|SKY|GOCAR|IRON|GENIUS|POP|MINT|EPSILON|BROADWAY|JUMP|HOP|LEGEND|NEW AGE|LINE|ADVANCE|FEEL|FOLLOW|LIKE|LINK|LIVE|THINK|FREEDOM|CHICAGO|CLEVELAND|BALTIMORE-GH|IOWA|BOSTON|SEATTLE|PHOENIX|DALLAS|IN 101|MasterChef)\\b",
+	        "MiTablet": "\\bMI PAD\\b|\\bHM NOTE 1W\\b",
+	        "NibiruTablet": "Nibiru M1|Nibiru Jupiter One",
+	        "NexoTablet": "NEXO NOVA|NEXO 10|NEXO AVIO|NEXO FREE|NEXO GO|NEXO EVO|NEXO 3G|NEXO SMART|NEXO KIDDO|NEXO MOBI",
+	        "LeaderTablet": "TBLT10Q|TBLT10I|TBL-10WDKB|TBL-10WDKBO2013|TBL-W230V2|TBL-W450|TBL-W500|SV572|TBLT7I|TBA-AC7-8G|TBLT79|TBL-8W16|TBL-10W32|TBL-10WKB|TBL-W100",
+	        "UbislateTablet": "UbiSlate[\\s]?7C",
+	        "PocketBookTablet": "Pocketbook",
+	        "KocasoTablet": "\\b(TB-1207)\\b",
+	        "HisenseTablet": "\\b(F5281|E2371)\\b",
+	        "Hudl": "Hudl HT7S3|Hudl 2",
+	        "TelstraTablet": "T-Hub2",
+	        "GenericTablet": "Android.*\\b97D\\b|Tablet(?!.*PC)|BNTV250A|MID-WCDMA|LogicPD Zoom2|\\bA7EB\\b|CatNova8|A1_07|CT704|CT1002|\\bM721\\b|rk30sdk|\\bEVOTAB\\b|M758A|ET904|ALUMIUM10|Smartfren Tab|Endeavour 1010|Tablet-PC-4|Tagi Tab|\\bM6pro\\b|CT1020W|arc 10HD|\\bTP750\\b"
+	    },
+	    "oss": {
+	        "AndroidOS": "Android",
+	        "BlackBerryOS": "blackberry|\\bBB10\\b|rim tablet os",
+	        "PalmOS": "PalmOS|avantgo|blazer|elaine|hiptop|palm|plucker|xiino",
+	        "SymbianOS": "Symbian|SymbOS|Series60|Series40|SYB-[0-9]+|\\bS60\\b",
+	        "WindowsMobileOS": "Windows CE.*(PPC|Smartphone|Mobile|[0-9]{3}x[0-9]{3})|Window Mobile|Windows Phone [0-9.]+|WCE;",
+	        "WindowsPhoneOS": "Windows Phone 10.0|Windows Phone 8.1|Windows Phone 8.0|Windows Phone OS|XBLWP7|ZuneWP7|Windows NT 6.[23]; ARM;",
+	        "iOS": "\\biPhone.*Mobile|\\biPod|\\biPad",
+	        "MeeGoOS": "MeeGo",
+	        "MaemoOS": "Maemo",
+	        "JavaOS": "J2ME\/|\\bMIDP\\b|\\bCLDC\\b",
+	        "webOS": "webOS|hpwOS",
+	        "badaOS": "\\bBada\\b",
+	        "BREWOS": "BREW"
+	    },
+	    "uas": {
+	        "Chrome": "\\bCrMo\\b|CriOS|Android.*Chrome\/[.0-9]* (Mobile)?",
+	        "Dolfin": "\\bDolfin\\b",
+	        "Opera": "Opera.*Mini|Opera.*Mobi|Android.*Opera|Mobile.*OPR\/[0-9.]+|Coast\/[0-9.]+",
+	        "Skyfire": "Skyfire",
+	        "Edge": "Mobile Safari\/[.0-9]* Edge",
+	        "IE": "IEMobile|MSIEMobile",
+	        "Firefox": "fennec|firefox.*maemo|(Mobile|Tablet).*Firefox|Firefox.*Mobile|FxiOS",
+	        "Bolt": "bolt",
+	        "TeaShark": "teashark",
+	        "Blazer": "Blazer",
+	        "Safari": "Version.*Mobile.*Safari|Safari.*Mobile|MobileSafari",
+	        "UCBrowser": "UC.*Browser|UCWEB",
+	        "baiduboxapp": "baiduboxapp",
+	        "baidubrowser": "baidubrowser",
+	        "DiigoBrowser": "DiigoBrowser",
+	        "Puffin": "Puffin",
+	        "Mercury": "\\bMercury\\b",
+	        "ObigoBrowser": "Obigo",
+	        "NetFront": "NF-Browser",
+	        "GenericBrowser": "NokiaBrowser|OviBrowser|OneBrowser|TwonkyBeamBrowser|SEMC.*Browser|FlyFlow|Minimo|NetFront|Novarra-Vision|MQQBrowser|MicroMessenger",
+	        "PaleMoon": "Android.*PaleMoon|Mobile.*PaleMoon"
+	    },
+	    "props": {
+	        "Mobile": "Mobile\/[VER]",
+	        "Build": "Build\/[VER]",
+	        "Version": "Version\/[VER]",
+	        "VendorID": "VendorID\/[VER]",
+	        "iPad": "iPad.*CPU[a-z ]+[VER]",
+	        "iPhone": "iPhone.*CPU[a-z ]+[VER]",
+	        "iPod": "iPod.*CPU[a-z ]+[VER]",
+	        "Kindle": "Kindle\/[VER]",
+	        "Chrome": [
+	            "Chrome\/[VER]",
+	            "CriOS\/[VER]",
+	            "CrMo\/[VER]"
+	        ],
+	        "Coast": [
+	            "Coast\/[VER]"
+	        ],
+	        "Dolfin": "Dolfin\/[VER]",
+	        "Firefox": [
+	            "Firefox\/[VER]",
+	            "FxiOS\/[VER]"
+	        ],
+	        "Fennec": "Fennec\/[VER]",
+	        "Edge": "Edge\/[VER]",
+	        "IE": [
+	            "IEMobile\/[VER];",
+	            "IEMobile [VER]",
+	            "MSIE [VER];",
+	            "Trident\/[0-9.]+;.*rv:[VER]"
+	        ],
+	        "NetFront": "NetFront\/[VER]",
+	        "NokiaBrowser": "NokiaBrowser\/[VER]",
+	        "Opera": [
+	            " OPR\/[VER]",
+	            "Opera Mini\/[VER]",
+	            "Version\/[VER]"
+	        ],
+	        "Opera Mini": "Opera Mini\/[VER]",
+	        "Opera Mobi": "Version\/[VER]",
+	        "UC Browser": "UC Browser[VER]",
+	        "MQQBrowser": "MQQBrowser\/[VER]",
+	        "MicroMessenger": "MicroMessenger\/[VER]",
+	        "baiduboxapp": "baiduboxapp\/[VER]",
+	        "baidubrowser": "baidubrowser\/[VER]",
+	        "SamsungBrowser": "SamsungBrowser\/[VER]",
+	        "Iron": "Iron\/[VER]",
+	        "Safari": [
+	            "Version\/[VER]",
+	            "Safari\/[VER]"
+	        ],
+	        "Skyfire": "Skyfire\/[VER]",
+	        "Tizen": "Tizen\/[VER]",
+	        "Webkit": "webkit[ \/][VER]",
+	        "PaleMoon": "PaleMoon\/[VER]",
+	        "Gecko": "Gecko\/[VER]",
+	        "Trident": "Trident\/[VER]",
+	        "Presto": "Presto\/[VER]",
+	        "Goanna": "Goanna\/[VER]",
+	        "iOS": " \\bi?OS\\b [VER][ ;]{1}",
+	        "Android": "Android [VER]",
+	        "BlackBerry": [
+	            "BlackBerry[\\w]+\/[VER]",
+	            "BlackBerry.*Version\/[VER]",
+	            "Version\/[VER]"
+	        ],
+	        "BREW": "BREW [VER]",
+	        "Java": "Java\/[VER]",
+	        "Windows Phone OS": [
+	            "Windows Phone OS [VER]",
+	            "Windows Phone [VER]"
+	        ],
+	        "Windows Phone": "Windows Phone [VER]",
+	        "Windows CE": "Windows CE\/[VER]",
+	        "Windows NT": "Windows NT [VER]",
+	        "Symbian": [
+	            "SymbianOS\/[VER]",
+	            "Symbian\/[VER]"
+	        ],
+	        "webOS": [
+	            "webOS\/[VER]",
+	            "hpwOS\/[VER];"
+	        ]
+	    },
+	    "utils": {
+	        "Bot": "Googlebot|facebookexternalhit|AdsBot-Google|Google Keyword Suggestion|Facebot|YandexBot|YandexMobileBot|bingbot|ia_archiver|AhrefsBot|Ezooms|GSLFbot|WBSearchBot|Twitterbot|TweetmemeBot|Twikle|PaperLiBot|Wotbox|UnwindFetchor|Exabot|MJ12bot|YandexImages|TurnitinBot|Pingdom",
+	        "MobileBot": "Googlebot-Mobile|AdsBot-Google-Mobile|YahooSeeker\/M1A1-R2D2",
+	        "DesktopMode": "WPDesktop",
+	        "TV": "SonyDTV|HbbTV",
+	        "WebKit": "(webkit)[ \/]([\\w.]+)",
+	        "Console": "\\b(Nintendo|Nintendo WiiU|Nintendo 3DS|PLAYSTATION|Xbox)\\b",
+	        "Watch": "SM-V700"
+	    }
+	};
+
+	    // following patterns come from http://detectmobilebrowsers.com/
+	    impl.detectMobileBrowsers = {
+	        fullPattern: /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,
+	        shortPattern: /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i,
+	        tabletPattern: /android|ipad|playbook|silk/i
+	    };
+
+	    var hasOwnProp = Object.prototype.hasOwnProperty,
+	        isArray;
+
+	    impl.FALLBACK_PHONE = 'UnknownPhone';
+	    impl.FALLBACK_TABLET = 'UnknownTablet';
+	    impl.FALLBACK_MOBILE = 'UnknownMobile';
+
+	    isArray = ('isArray' in Array) ?
+	        Array.isArray : function (value) { return Object.prototype.toString.call(value) === '[object Array]'; };
+
+	    function equalIC(a, b) {
+	        return a != null && b != null && a.toLowerCase() === b.toLowerCase();
+	    }
+
+	    function containsIC(array, value) {
+	        var valueLC, i, len = array.length;
+	        if (!len || !value) {
+	            return false;
+	        }
+	        valueLC = value.toLowerCase();
+	        for (i = 0; i < len; ++i) {
+	            if (valueLC === array[i].toLowerCase()) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+
+	    function convertPropsToRegExp(object) {
+	        for (var key in object) {
+	            if (hasOwnProp.call(object, key)) {
+	                object[key] = new RegExp(object[key], 'i');
+	            }
+	        }
+	    }
+
+	    (function init() {
+	        var key, values, value, i, len, verPos, mobileDetectRules = impl.mobileDetectRules;
+	        for (key in mobileDetectRules.props) {
+	            if (hasOwnProp.call(mobileDetectRules.props, key)) {
+	                values = mobileDetectRules.props[key];
+	                if (!isArray(values)) {
+	                    values = [values];
+	                }
+	                len = values.length;
+	                for (i = 0; i < len; ++i) {
+	                    value = values[i];
+	                    verPos = value.indexOf('[VER]');
+	                    if (verPos >= 0) {
+	                        value = value.substring(0, verPos) + '([\\w._\\+]+)' + value.substring(verPos + 5);
+	                    }
+	                    values[i] = new RegExp(value, 'i');
+	                }
+	                mobileDetectRules.props[key] = values;
+	            }
+	        }
+	        convertPropsToRegExp(mobileDetectRules.oss);
+	        convertPropsToRegExp(mobileDetectRules.phones);
+	        convertPropsToRegExp(mobileDetectRules.tablets);
+	        convertPropsToRegExp(mobileDetectRules.uas);
+	        convertPropsToRegExp(mobileDetectRules.utils);
+
+	        // copy some patterns to oss0 which are tested first (see issue#15)
+	        mobileDetectRules.oss0 = {
+	            WindowsPhoneOS: mobileDetectRules.oss.WindowsPhoneOS,
+	            WindowsMobileOS: mobileDetectRules.oss.WindowsMobileOS
+	        };
+	    }());
+
+	    /**
+	     * Test userAgent string against a set of rules and find the first matched key.
+	     * @param {Object} rules (key is String, value is RegExp)
+	     * @param {String} userAgent the navigator.userAgent (or HTTP-Header 'User-Agent').
+	     * @returns {String|null} the matched key if found, otherwise <tt>null</tt>
+	     * @private
+	     */
+	    impl.findMatch = function(rules, userAgent) {
+	        for (var key in rules) {
+	            if (hasOwnProp.call(rules, key)) {
+	                if (rules[key].test(userAgent)) {
+	                    return key;
+	                }
+	            }
+	        }
+	        return null;
+	    };
+
+	    /**
+	     * Test userAgent string against a set of rules and return an array of matched keys.
+	     * @param {Object} rules (key is String, value is RegExp)
+	     * @param {String} userAgent the navigator.userAgent (or HTTP-Header 'User-Agent').
+	     * @returns {Array} an array of matched keys, may be empty when there is no match, but not <tt>null</tt>
+	     * @private
+	     */
+	    impl.findMatches = function(rules, userAgent) {
+	        var result = [];
+	        for (var key in rules) {
+	            if (hasOwnProp.call(rules, key)) {
+	                if (rules[key].test(userAgent)) {
+	                    result.push(key);
+	                }
+	            }
+	        }
+	        return result;
+	    };
+
+	    /**
+	     * Check the version of the given property in the User-Agent.
+	     *
+	     * @param {String} propertyName
+	     * @param {String} userAgent
+	     * @return {String} version or <tt>null</tt> if version not found
+	     * @private
+	     */
+	    impl.getVersionStr = function (propertyName, userAgent) {
+	        var props = impl.mobileDetectRules.props, patterns, i, len, match;
+	        if (hasOwnProp.call(props, propertyName)) {
+	            patterns = props[propertyName];
+	            len = patterns.length;
+	            for (i = 0; i < len; ++i) {
+	                match = patterns[i].exec(userAgent);
+	                if (match !== null) {
+	                    return match[1];
+	                }
+	            }
+	        }
+	        return null;
+	    };
+
+	    /**
+	     * Check the version of the given property in the User-Agent.
+	     * Will return a float number. (eg. 2_0 will return 2.0, 4.3.1 will return 4.31)
+	     *
+	     * @param {String} propertyName
+	     * @param {String} userAgent
+	     * @return {Number} version or <tt>NaN</tt> if version not found
+	     * @private
+	     */
+	    impl.getVersion = function (propertyName, userAgent) {
+	        var version = impl.getVersionStr(propertyName, userAgent);
+	        return version ? impl.prepareVersionNo(version) : NaN;
+	    };
+
+	    /**
+	     * Prepare the version number.
+	     *
+	     * @param {String} version
+	     * @return {Number} the version number as a floating number
+	     * @private
+	     */
+	    impl.prepareVersionNo = function (version) {
+	        var numbers;
+
+	        numbers = version.split(/[a-z._ \/\-]/i);
+	        if (numbers.length === 1) {
+	            version = numbers[0];
+	        }
+	        if (numbers.length > 1) {
+	            version = numbers[0] + '.';
+	            numbers.shift();
+	            version += numbers.join('');
+	        }
+	        return Number(version);
+	    };
+
+	    impl.isMobileFallback = function (userAgent) {
+	        return impl.detectMobileBrowsers.fullPattern.test(userAgent) ||
+	            impl.detectMobileBrowsers.shortPattern.test(userAgent.substr(0,4));
+	    };
+
+	    impl.isTabletFallback = function (userAgent) {
+	        return impl.detectMobileBrowsers.tabletPattern.test(userAgent);
+	    };
+
+	    impl.prepareDetectionCache = function (cache, userAgent, maxPhoneWidth) {
+	        if (cache.mobile !== undefined) {
+	            return;
+	        }
+	        var phone, tablet, phoneSized;
+
+	        // first check for stronger tablet rules, then phone (see issue#5)
+	        tablet = impl.findMatch(impl.mobileDetectRules.tablets, userAgent);
+	        if (tablet) {
+	            cache.mobile = cache.tablet = tablet;
+	            cache.phone = null;
+	            return; // unambiguously identified as tablet
+	        }
+
+	        phone = impl.findMatch(impl.mobileDetectRules.phones, userAgent);
+	        if (phone) {
+	            cache.mobile = cache.phone = phone;
+	            cache.tablet = null;
+	            return; // unambiguously identified as phone
+	        }
+
+	        // our rules haven't found a match -> try more general fallback rules
+	        if (impl.isMobileFallback(userAgent)) {
+	            phoneSized = MobileDetect.isPhoneSized(maxPhoneWidth);
+	            if (phoneSized === undefined) {
+	                cache.mobile = impl.FALLBACK_MOBILE;
+	                cache.tablet = cache.phone = null;
+	            } else if (phoneSized) {
+	                cache.mobile = cache.phone = impl.FALLBACK_PHONE;
+	                cache.tablet = null;
+	            } else {
+	                cache.mobile = cache.tablet = impl.FALLBACK_TABLET;
+	                cache.phone = null;
+	            }
+	        } else if (impl.isTabletFallback(userAgent)) {
+	            cache.mobile = cache.tablet = impl.FALLBACK_TABLET;
+	            cache.phone = null;
+	        } else {
+	            // not mobile at all!
+	            cache.mobile = cache.tablet = cache.phone = null;
+	        }
+	    };
+
+	    // t is a reference to a MobileDetect instance
+	    impl.mobileGrade = function (t) {
+	        // impl note:
+	        // To keep in sync w/ Mobile_Detect.php easily, the following code is tightly aligned to the PHP version.
+	        // When changes are made in Mobile_Detect.php, copy this method and replace:
+	        //     $this-> / t.
+	        //     self::MOBILE_GRADE_(.) / '$1'
+	        //     , self::VERSION_TYPE_FLOAT / (nothing)
+	        //     isIOS() / os('iOS')
+	        //     [reg] / (nothing)   <-- jsdelivr complaining about unescaped unicode character U+00AE
+	        var $isMobile = t.mobile() !== null;
+
+	        if (
+	            // Apple iOS 3.2-5.1 - Tested on the original iPad (4.3 / 5.0), iPad 2 (4.3), iPad 3 (5.1), original iPhone (3.1), iPhone 3 (3.2), 3GS (4.3), 4 (4.3 / 5.0), and 4S (5.1)
+	            t.os('iOS') && t.version('iPad')>=4.3 ||
+	            t.os('iOS') && t.version('iPhone')>=3.1 ||
+	            t.os('iOS') && t.version('iPod')>=3.1 ||
+
+	            // Android 2.1-2.3 - Tested on the HTC Incredible (2.2), original Droid (2.2), HTC Aria (2.1), Google Nexus S (2.3). Functional on 1.5 & 1.6 but performance may be sluggish, tested on Google G1 (1.5)
+	            // Android 3.1 (Honeycomb)  - Tested on the Samsung Galaxy Tab 10.1 and Motorola XOOM
+	            // Android 4.0 (ICS)  - Tested on a Galaxy Nexus. Note: transition performance can be poor on upgraded devices
+	            // Android 4.1 (Jelly Bean)  - Tested on a Galaxy Nexus and Galaxy 7
+	            ( t.version('Android')>2.1 && t.is('Webkit') ) ||
+
+	            // Windows Phone 7-7.5 - Tested on the HTC Surround (7.0) HTC Trophy (7.5), LG-E900 (7.5), Nokia Lumia 800
+	            t.version('Windows Phone OS')>=7.0 ||
+
+	            // Blackberry 7 - Tested on BlackBerry Torch 9810
+	            // Blackberry 6.0 - Tested on the Torch 9800 and Style 9670
+	            t.is('BlackBerry') && t.version('BlackBerry')>=6.0 ||
+	            // Blackberry Playbook (1.0-2.0) - Tested on PlayBook
+	            t.match('Playbook.*Tablet') ||
+
+	            // Palm WebOS (1.4-2.0) - Tested on the Palm Pixi (1.4), Pre (1.4), Pre 2 (2.0)
+	            ( t.version('webOS')>=1.4 && t.match('Palm|Pre|Pixi') ) ||
+	            // Palm WebOS 3.0  - Tested on HP TouchPad
+	            t.match('hp.*TouchPad') ||
+
+	            // Firefox Mobile (12 Beta) - Tested on Android 2.3 device
+	            ( t.is('Firefox') && t.version('Firefox')>=12 ) ||
+
+	            // Chrome for Android - Tested on Android 4.0, 4.1 device
+	            ( t.is('Chrome') && t.is('AndroidOS') && t.version('Android')>=4.0 ) ||
+
+	            // Skyfire 4.1 - Tested on Android 2.3 device
+	            ( t.is('Skyfire') && t.version('Skyfire')>=4.1 && t.is('AndroidOS') && t.version('Android')>=2.3 ) ||
+
+	            // Opera Mobile 11.5-12: Tested on Android 2.3
+	            ( t.is('Opera') && t.version('Opera Mobi')>11 && t.is('AndroidOS') ) ||
+
+	            // Meego 1.2 - Tested on Nokia 950 and N9
+	            t.is('MeeGoOS') ||
+
+	            // Tizen (pre-release) - Tested on early hardware
+	            t.is('Tizen') ||
+
+	            // Samsung Bada 2.0 - Tested on a Samsung Wave 3, Dolphin browser
+	            // @todo: more tests here!
+	            t.is('Dolfin') && t.version('Bada')>=2.0 ||
+
+	            // UC Browser - Tested on Android 2.3 device
+	            ( (t.is('UC Browser') || t.is('Dolfin')) && t.version('Android')>=2.3 ) ||
+
+	            // Kindle 3 and Fire  - Tested on the built-in WebKit browser for each
+	            ( t.match('Kindle Fire') ||
+	                t.is('Kindle') && t.version('Kindle')>=3.0 ) ||
+
+	            // Nook Color 1.4.1 - Tested on original Nook Color, not Nook Tablet
+	            t.is('AndroidOS') && t.is('NookTablet') ||
+
+	            // Chrome Desktop 11-21 - Tested on OS X 10.7 and Windows 7
+	            t.version('Chrome')>=11 && !$isMobile ||
+
+	            // Safari Desktop 4-5 - Tested on OS X 10.7 and Windows 7
+	            t.version('Safari')>=5.0 && !$isMobile ||
+
+	            // Firefox Desktop 4-13 - Tested on OS X 10.7 and Windows 7
+	            t.version('Firefox')>=4.0 && !$isMobile ||
+
+	            // Internet Explorer 7-9 - Tested on Windows XP, Vista and 7
+	            t.version('MSIE')>=7.0 && !$isMobile ||
+
+	            // Opera Desktop 10-12 - Tested on OS X 10.7 and Windows 7
+	            // @reference: http://my.opera.com/community/openweb/idopera/
+	            t.version('Opera')>=10 && !$isMobile
+
+	            ){
+	            return 'A';
+	        }
+
+	        if (
+	            t.os('iOS') && t.version('iPad')<4.3 ||
+	            t.os('iOS') && t.version('iPhone')<3.1 ||
+	            t.os('iOS') && t.version('iPod')<3.1 ||
+
+	            // Blackberry 5.0: Tested on the Storm 2 9550, Bold 9770
+	            t.is('Blackberry') && t.version('BlackBerry')>=5 && t.version('BlackBerry')<6 ||
+
+	            //Opera Mini (5.0-6.5) - Tested on iOS 3.2/4.3 and Android 2.3
+	            ( t.version('Opera Mini')>=5.0 && t.version('Opera Mini')<=6.5 &&
+	                (t.version('Android')>=2.3 || t.is('iOS')) ) ||
+
+	            // Nokia Symbian^3 - Tested on Nokia N8 (Symbian^3), C7 (Symbian^3), also works on N97 (Symbian^1)
+	            t.match('NokiaN8|NokiaC7|N97.*Series60|Symbian/3') ||
+
+	            // @todo: report this (tested on Nokia N71)
+	            t.version('Opera Mobi')>=11 && t.is('SymbianOS')
+	            ){
+	            return 'B';
+	        }
+
+	        if (
+	        // Blackberry 4.x - Tested on the Curve 8330
+	            t.version('BlackBerry')<5.0 ||
+	            // Windows Mobile - Tested on the HTC Leo (WinMo 5.2)
+	            t.match('MSIEMobile|Windows CE.*Mobile') || t.version('Windows Mobile')<=5.2
+
+	            ){
+	            return 'C';
+	        }
+
+	        //All older smartphone platforms and featurephones - Any device that doesn't support media queries
+	        //will receive the basic, C grade experience.
+	        return 'C';
+	    };
+
+	    impl.detectOS = function (ua) {
+	        return impl.findMatch(impl.mobileDetectRules.oss0, ua) ||
+	            impl.findMatch(impl.mobileDetectRules.oss, ua);
+	    };
+
+	    impl.getDeviceSmallerSide = function () {
+	        return window.screen.width < window.screen.height ?
+	            window.screen.width :
+	            window.screen.height;
+	    };
+
+	    /**
+	     * Constructor for MobileDetect object.
+	     * <br>
+	     * Such an object will keep a reference to the given user-agent string and cache most of the detect queries.<br>
+	     * <div style="background-color: #d9edf7; border: 1px solid #bce8f1; color: #3a87ad; padding: 14px; border-radius: 2px; margin-top: 20px">
+	     *     <strong>Find information how to download and install:</strong>
+	     *     <a href="https://github.com/hgoebl/mobile-detect.js/">github.com/hgoebl/mobile-detect.js/</a>
+	     * </div>
+	     *
+	     * @example <pre>
+	     *     var md = new MobileDetect(window.navigator.userAgent);
+	     *     if (md.mobile()) {
+	     *         location.href = (md.mobileGrade() === 'A') ? '/mobile/' : '/lynx/';
+	     *     }
+	     * </pre>
+	     *
+	     * @param {string} userAgent typically taken from window.navigator.userAgent or http_header['User-Agent']
+	     * @param {number} [maxPhoneWidth=600] <strong>only for browsers</strong> specify a value for the maximum
+	     *        width of smallest device side (in logical "CSS" pixels) until a device detected as mobile will be handled
+	     *        as phone.
+	     *        This is only used in cases where the device cannot be classified as phone or tablet.<br>
+	     *        See <a href="http://developer.android.com/guide/practices/screens_support.html">Declaring Tablet Layouts
+	     *        for Android</a>.<br>
+	     *        If you provide a value < 0, then this "fuzzy" check is disabled.
+	     * @constructor
+	     * @global
+	     */
+	    function MobileDetect(userAgent, maxPhoneWidth) {
+	        this.ua = userAgent || '';
+	        this._cache = {};
+	        //600dp is typical 7" tablet minimum width
+	        this.maxPhoneWidth = maxPhoneWidth || 600;
+	    }
+
+	    MobileDetect.prototype = {
+	        constructor: MobileDetect,
+
+	        /**
+	         * Returns the detected phone or tablet type or <tt>null</tt> if it is not a mobile device.
+	         * <br>
+	         * For a list of possible return values see {@link MobileDetect#phone} and {@link MobileDetect#tablet}.<br>
+	         * <br>
+	         * If the device is not detected by the regular expressions from Mobile-Detect, a test is made against
+	         * the patterns of <a href="http://detectmobilebrowsers.com/">detectmobilebrowsers.com</a>. If this test
+	         * is positive, a value of <code>UnknownPhone</code>, <code>UnknownTablet</code> or
+	         * <code>UnknownMobile</code> is returned.<br>
+	         * When used in browser, the decision whether phone or tablet is made based on <code>screen.width/height</code>.<br>
+	         * <br>
+	         * When used server-side (node.js), there is no way to tell the difference between <code>UnknownTablet</code>
+	         * and <code>UnknownMobile</code>, so you will get <code>UnknownMobile</code> here.<br>
+	         * Be aware that since v1.0.0 in this special case you will get <code>UnknownMobile</code> only for:
+	         * {@link MobileDetect#mobile}, not for {@link MobileDetect#phone} and {@link MobileDetect#tablet}.
+	         * In versions before v1.0.0 all 3 methods returned <code>UnknownMobile</code> which was tedious to use.
+	         * <br>
+	         * In most cases you will use the return value just as a boolean.
+	         *
+	         * @returns {String} the key for the phone family or tablet family, e.g. "Nexus".
+	         * @function MobileDetect#mobile
+	         */
+	        mobile: function () {
+	            impl.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
+	            return this._cache.mobile;
+	        },
+
+	        /**
+	         * Returns the detected phone type/family string or <tt>null</tt>.
+	         * <br>
+	         * The returned tablet (family or producer) is one of following keys:<br>
+	         * <br><tt>iPhone, BlackBerry, HTC, Nexus, Dell, Motorola, Samsung, LG, Sony, Asus,
+	         * NokiaLumia, Micromax, Palm, Vertu, Pantech, Fly, Wiko, iMobile, SimValley,
+	         * Wolfgang, Alcatel, Nintendo, Amoi, INQ, GenericPhone</tt><br>
+	         * <br>
+	         * If the device is not detected by the regular expressions from Mobile-Detect, a test is made against
+	         * the patterns of <a href="http://detectmobilebrowsers.com/">detectmobilebrowsers.com</a>. If this test
+	         * is positive, a value of <code>UnknownPhone</code> or <code>UnknownMobile</code> is returned.<br>
+	         * When used in browser, the decision whether phone or tablet is made based on <code>screen.width/height</code>.<br>
+	         * <br>
+	         * When used server-side (node.js), there is no way to tell the difference between <code>UnknownTablet</code>
+	         * and <code>UnknownMobile</code>, so you will get <code>null</code> here, while {@link MobileDetect#mobile}
+	         * will return <code>UnknownMobile</code>.<br>
+	         * Be aware that since v1.0.0 in this special case you will get <code>UnknownMobile</code> only for:
+	         * {@link MobileDetect#mobile}, not for {@link MobileDetect#phone} and {@link MobileDetect#tablet}.
+	         * In versions before v1.0.0 all 3 methods returned <code>UnknownMobile</code> which was tedious to use.
+	         * <br>
+	         * In most cases you will use the return value just as a boolean.
+	         *
+	         * @returns {String} the key of the phone family or producer, e.g. "iPhone"
+	         * @function MobileDetect#phone
+	         */
+	        phone: function () {
+	            impl.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
+	            return this._cache.phone;
+	        },
+
+	        /**
+	         * Returns the detected tablet type/family string or <tt>null</tt>.
+	         * <br>
+	         * The returned tablet (family or producer) is one of following keys:<br>
+	         * <br><tt>iPad, NexusTablet, SamsungTablet, Kindle, SurfaceTablet, HPTablet, AsusTablet,
+	         * BlackBerryTablet, HTCtablet, MotorolaTablet, NookTablet, AcerTablet,
+	         * ToshibaTablet, LGTablet, FujitsuTablet, PrestigioTablet, LenovoTablet,
+	         * DellTablet, YarvikTablet, MedionTablet, ArnovaTablet, IntensoTablet, IRUTablet,
+	         * MegafonTablet, EbodaTablet, AllViewTablet, ArchosTablet, AinolTablet,
+	         * NokiaLumiaTablet, SonyTablet, PhilipsTablet, CubeTablet, CobyTablet, MIDTablet,
+	         * MSITablet, SMiTTablet, RockChipTablet, FlyTablet, bqTablet, HuaweiTablet,
+	         * NecTablet, PantechTablet, BronchoTablet, VersusTablet, ZyncTablet,
+	         * PositivoTablet, NabiTablet, KoboTablet, DanewTablet, TexetTablet,
+	         * PlaystationTablet, TrekstorTablet, PyleAudioTablet, AdvanTablet,
+	         * DanyTechTablet, GalapadTablet, MicromaxTablet, KarbonnTablet, AllFineTablet,
+	         * PROSCANTablet, YONESTablet, ChangJiaTablet, GUTablet, PointOfViewTablet,
+	         * OvermaxTablet, HCLTablet, DPSTablet, VistureTablet, CrestaTablet,
+	         * MediatekTablet, ConcordeTablet, GoCleverTablet, ModecomTablet, VoninoTablet,
+	         * ECSTablet, StorexTablet, VodafoneTablet, EssentielBTablet, RossMoorTablet,
+	         * iMobileTablet, TolinoTablet, AudioSonicTablet, AMPETablet, SkkTablet,
+	         * TecnoTablet, JXDTablet, iJoyTablet, FX2Tablet, XoroTablet, ViewsonicTablet,
+	         * OdysTablet, CaptivaTablet, IconbitTablet, TeclastTablet, OndaTablet,
+	         * JaytechTablet, BlaupunktTablet, DigmaTablet, EvolioTablet, LavaTablet,
+	         * AocTablet, MpmanTablet, CelkonTablet, WolderTablet, MiTablet, NibiruTablet,
+	         * NexoTablet, LeaderTablet, UbislateTablet, PocketBookTablet, KocasoTablet,
+	         * HisenseTablet, Hudl, TelstraTablet, GenericTablet</tt><br>
+	         * <br>
+	         * If the device is not detected by the regular expressions from Mobile-Detect, a test is made against
+	         * the patterns of <a href="http://detectmobilebrowsers.com/">detectmobilebrowsers.com</a>. If this test
+	         * is positive, a value of <code>UnknownTablet</code> or <code>UnknownMobile</code> is returned.<br>
+	         * When used in browser, the decision whether phone or tablet is made based on <code>screen.width/height</code>.<br>
+	         * <br>
+	         * When used server-side (node.js), there is no way to tell the difference between <code>UnknownTablet</code>
+	         * and <code>UnknownMobile</code>, so you will get <code>null</code> here, while {@link MobileDetect#mobile}
+	         * will return <code>UnknownMobile</code>.<br>
+	         * Be aware that since v1.0.0 in this special case you will get <code>UnknownMobile</code> only for:
+	         * {@link MobileDetect#mobile}, not for {@link MobileDetect#phone} and {@link MobileDetect#tablet}.
+	         * In versions before v1.0.0 all 3 methods returned <code>UnknownMobile</code> which was tedious to use.
+	         * <br>
+	         * In most cases you will use the return value just as a boolean.
+	         *
+	         * @returns {String} the key of the tablet family or producer, e.g. "SamsungTablet"
+	         * @function MobileDetect#tablet
+	         */
+	        tablet: function () {
+	            impl.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
+	            return this._cache.tablet;
+	        },
+
+	        /**
+	         * Returns the (first) detected user-agent string or <tt>null</tt>.
+	         * <br>
+	         * The returned user-agent is one of following keys:<br>
+	         * <br><tt>Chrome, Dolfin, Opera, Skyfire, Edge, IE, Firefox, Bolt, TeaShark, Blazer,
+	         * Safari, UCBrowser, baiduboxapp, baidubrowser, DiigoBrowser, Puffin, Mercury,
+	         * ObigoBrowser, NetFront, GenericBrowser, PaleMoon</tt><br>
+	         * <br>
+	         * In most cases calling {@link MobileDetect#userAgent} will be sufficient. But there are rare
+	         * cases where a mobile device pretends to be more than one particular browser. You can get the
+	         * list of all matches with {@link MobileDetect#userAgents} or check for a particular value by
+	         * providing one of the defined keys as first argument to {@link MobileDetect#is}.
+	         *
+	         * @returns {String} the key for the detected user-agent or <tt>null</tt>
+	         * @function MobileDetect#userAgent
+	         */
+	        userAgent: function () {
+	            if (this._cache.userAgent === undefined) {
+	                this._cache.userAgent = impl.findMatch(impl.mobileDetectRules.uas, this.ua);
+	            }
+	            return this._cache.userAgent;
+	        },
+
+	        /**
+	         * Returns all detected user-agent strings.
+	         * <br>
+	         * The array is empty or contains one or more of following keys:<br>
+	         * <br><tt>Chrome, Dolfin, Opera, Skyfire, Edge, IE, Firefox, Bolt, TeaShark, Blazer,
+	         * Safari, UCBrowser, baiduboxapp, baidubrowser, DiigoBrowser, Puffin, Mercury,
+	         * ObigoBrowser, NetFront, GenericBrowser, PaleMoon</tt><br>
+	         * <br>
+	         * In most cases calling {@link MobileDetect#userAgent} will be sufficient. But there are rare
+	         * cases where a mobile device pretends to be more than one particular browser. You can get the
+	         * list of all matches with {@link MobileDetect#userAgents} or check for a particular value by
+	         * providing one of the defined keys as first argument to {@link MobileDetect#is}.
+	         *
+	         * @returns {Array} the array of detected user-agent keys or <tt>[]</tt>
+	         * @function MobileDetect#userAgents
+	         */
+	        userAgents: function () {
+	            if (this._cache.userAgents === undefined) {
+	                this._cache.userAgents = impl.findMatches(impl.mobileDetectRules.uas, this.ua);
+	            }
+	            return this._cache.userAgents;
+	        },
+
+	        /**
+	         * Returns the detected operating system string or <tt>null</tt>.
+	         * <br>
+	         * The operating system is one of following keys:<br>
+	         * <br><tt>AndroidOS, BlackBerryOS, PalmOS, SymbianOS, WindowsMobileOS, WindowsPhoneOS,
+	         * iOS, MeeGoOS, MaemoOS, JavaOS, webOS, badaOS, BREWOS</tt><br>
+	         *
+	         * @returns {String} the key for the detected operating system.
+	         * @function MobileDetect#os
+	         */
+	        os: function () {
+	            if (this._cache.os === undefined) {
+	                this._cache.os = impl.detectOS(this.ua);
+	            }
+	            return this._cache.os;
+	        },
+
+	        /**
+	         * Get the version (as Number) of the given property in the User-Agent.
+	         * <br>
+	         * Will return a float number. (eg. 2_0 will return 2.0, 4.3.1 will return 4.31)
+	         *
+	         * @param {String} key a key defining a thing which has a version.<br>
+	         *        You can use one of following keys:<br>
+	         * <br><tt>Mobile, Build, Version, VendorID, iPad, iPhone, iPod, Kindle, Chrome, Coast,
+	         * Dolfin, Firefox, Fennec, Edge, IE, NetFront, NokiaBrowser, Opera, Opera Mini,
+	         * Opera Mobi, UC Browser, MQQBrowser, MicroMessenger, baiduboxapp, baidubrowser,
+	         * SamsungBrowser, Iron, Safari, Skyfire, Tizen, Webkit, PaleMoon, Gecko, Trident,
+	         * Presto, Goanna, iOS, Android, BlackBerry, BREW, Java, Windows Phone OS, Windows
+	         * Phone, Windows CE, Windows NT, Symbian, webOS</tt><br>
+	         *
+	         * @returns {Number} the version as float or <tt>NaN</tt> if User-Agent doesn't contain this version.
+	         *          Be careful when comparing this value with '==' operator!
+	         * @function MobileDetect#version
+	         */
+	        version: function (key) {
+	            return impl.getVersion(key, this.ua);
+	        },
+
+	        /**
+	         * Get the version (as String) of the given property in the User-Agent.
+	         * <br>
+	         *
+	         * @param {String} key a key defining a thing which has a version.<br>
+	         *        You can use one of following keys:<br>
+	         * <br><tt>Mobile, Build, Version, VendorID, iPad, iPhone, iPod, Kindle, Chrome, Coast,
+	         * Dolfin, Firefox, Fennec, Edge, IE, NetFront, NokiaBrowser, Opera, Opera Mini,
+	         * Opera Mobi, UC Browser, MQQBrowser, MicroMessenger, baiduboxapp, baidubrowser,
+	         * SamsungBrowser, Iron, Safari, Skyfire, Tizen, Webkit, PaleMoon, Gecko, Trident,
+	         * Presto, Goanna, iOS, Android, BlackBerry, BREW, Java, Windows Phone OS, Windows
+	         * Phone, Windows CE, Windows NT, Symbian, webOS</tt><br>
+	         *
+	         * @returns {String} the "raw" version as String or <tt>null</tt> if User-Agent doesn't contain this version.
+	         *
+	         * @function MobileDetect#versionStr
+	         */
+	        versionStr: function (key) {
+	            return impl.getVersionStr(key, this.ua);
+	        },
+
+	        /**
+	         * Global test key against userAgent, os, phone, tablet and some other properties of userAgent string.
+	         *
+	         * @param {String} key the key (case-insensitive) of a userAgent, an operating system, phone or
+	         *        tablet family.<br>
+	         *        For a complete list of possible values, see {@link MobileDetect#userAgent},
+	         *        {@link MobileDetect#os}, {@link MobileDetect#phone}, {@link MobileDetect#tablet}.<br>
+	         *        Additionally you have following keys:<br>
+	         * <br><tt>Bot, MobileBot, DesktopMode, TV, WebKit, Console, Watch</tt><br>
+	         *
+	         * @returns {boolean} <tt>true</tt> when the given key is one of the defined keys of userAgent, os, phone,
+	         *                    tablet or one of the listed additional keys, otherwise <tt>false</tt>
+	         * @function MobileDetect#is
+	         */
+	        is: function (key) {
+	            return containsIC(this.userAgents(), key) ||
+	                   equalIC(key, this.os()) ||
+	                   equalIC(key, this.phone()) ||
+	                   equalIC(key, this.tablet()) ||
+	                   containsIC(impl.findMatches(impl.mobileDetectRules.utils, this.ua), key);
+	        },
+
+	        /**
+	         * Do a quick test against navigator::userAgent.
+	         *
+	         * @param {String|RegExp} pattern the pattern, either as String or RegExp
+	         *                        (a string will be converted to a case-insensitive RegExp).
+	         * @returns {boolean} <tt>true</tt> when the pattern matches, otherwise <tt>false</tt>
+	         * @function MobileDetect#match
+	         */
+	        match: function (pattern) {
+	            if (!(pattern instanceof RegExp)) {
+	                pattern = new RegExp(pattern, 'i');
+	            }
+	            return pattern.test(this.ua);
+	        },
+
+	        /**
+	         * Checks whether the mobile device can be considered as phone regarding <code>screen.width</code>.
+	         * <br>
+	         * Obviously this method makes sense in browser environments only (not for Node.js)!
+	         * @param {number} [maxPhoneWidth] the maximum logical pixels (aka. CSS-pixels) to be considered as phone.<br>
+	         *        The argument is optional and if not present or falsy, the value of the constructor is taken.
+	         * @returns {boolean|undefined} <code>undefined</code> if screen size wasn't detectable, else <code>true</code>
+	         *          when screen.width is less or equal to maxPhoneWidth, otherwise <code>false</code>.<br>
+	         *          Will always return <code>undefined</code> server-side.
+	         */
+	        isPhoneSized: function (maxPhoneWidth) {
+	            return MobileDetect.isPhoneSized(maxPhoneWidth || this.maxPhoneWidth);
+	        },
+
+	        /**
+	         * Returns the mobile grade ('A', 'B', 'C').
+	         *
+	         * @returns {String} one of the mobile grades ('A', 'B', 'C').
+	         * @function MobileDetect#mobileGrade
+	         */
+	        mobileGrade: function () {
+	            if (this._cache.grade === undefined) {
+	                this._cache.grade = impl.mobileGrade(this);
+	            }
+	            return this._cache.grade;
+	        }
+	    };
+
+	    // environment-dependent
+	    if (typeof window !== 'undefined' && window.screen) {
+	        MobileDetect.isPhoneSized = function (maxPhoneWidth) {
+	            return maxPhoneWidth < 0 ? undefined : impl.getDeviceSmallerSide() <= maxPhoneWidth;
+	        };
+	    } else {
+	        MobileDetect.isPhoneSized = function () {};
+	    }
+
+	    // should not be replaced by a completely new object - just overwrite existing methods
+	    MobileDetect._impl = impl;
+	    
+	    MobileDetect.version = '1.3.5 2016-11-14';
+
+	    return MobileDetect;
+	}); // end of call of define()
+	})((function (undefined) {
+	    if (typeof module !== 'undefined' && module.exports) {
+	        return function (factory) { module.exports = factory(); };
+	    } else if (true) {
+	        return __webpack_require__(312);
+	    } else if (typeof window !== 'undefined') {
+	        return function (factory) { window.MobileDetect = factory(); };
+	    } else {
+	        // please file a bug if you get this error!
+	        throw new Error('unknown environment');
+	    }
+	})());
 
 /***/ },
 /* 312 */
 /***/ function(module, exports) {
 
-	module.exports = "data:image/png;base64,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"
+	module.exports = function() { throw new Error("define cannot be used indirect"); };
+
 
 /***/ },
 /* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "<div id=\"player-1-wrapper\">\n    <div id=\"player-1\"></div>\n    <img src=\"" + __webpack_require__(314) + "\" class=\"js-lunch-box dokaben komaochi loop hidden\">\n</div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n    Usage:\n    <ul>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11\">https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10\">https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5\">https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5</a></li>\n    </ul>\n    <a href=\"#\" class=\"btn btn-twitter\">Tweet this</a>\n</div>\n";
+
+/***/ },
+/* 314 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 315 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(314);
+	var content = __webpack_require__(316);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(316)(content, {});
+	var update = __webpack_require__(318)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -26010,10 +27035,10 @@
 	}
 
 /***/ },
-/* 314 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(315)();
+	exports = module.exports = __webpack_require__(317)();
 	// imports
 
 
@@ -26024,7 +27049,7 @@
 
 
 /***/ },
-/* 315 */
+/* 317 */
 /***/ function(module, exports) {
 
 	/*
@@ -26080,7 +27105,7 @@
 
 
 /***/ },
-/* 316 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -26332,16 +27357,16 @@
 
 
 /***/ },
-/* 317 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(318);
+	var content = __webpack_require__(320);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(316)(content, {});
+	var update = __webpack_require__(318)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -26358,15 +27383,55 @@
 	}
 
 /***/ },
-/* 318 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(315)();
+	exports = module.exports = __webpack_require__(317)();
 	// imports
 
 
 	// module
 	exports.push([module.id, "/*http://codepen.io/trkbt10/pen/YpdOXe*/\nh1 {\n    margin: 0.25em 0;\n    display: inline-block;\n    font-size: 84px;\n    text-align: center;\n    color: #bf2b04;\n}\n\n.dokaben {\n    font-family: 'dokaben_ver2_1';\n    font-weight: normal;\n    text-shadow: rgba(93, 20, 0, 0.9) 0px 2px 0px, rgba(93, 20, 0, 0.9) -2px 0px 0px, rgba(93, 20, 0, 0.9) 0px -2px 0px, rgba(93, 20, 0, 0.9) -2px 0px 0px, rgba(93, 20, 0, 0.9) 2px 2px 0px, rgba(93, 20, 0, 0.9) -2px 2px 0px, rgba(93, 20, 0, 0.9) 2px -2px 0px, rgba(93, 20, 0, 0.9) -2px -2px 0px;\n    -webkit-transform-origin: center bottom;\n    transform-origin: center bottom;\n    -webkit-animation: dokaben 2s;\n    animation: dokaben 2s;\n    -webkit-animation-timing-function: linear;\n    animation-timing-function: linear;\n    -webkit-animation-iteration-count: 1;\n    animation-iteration-count: 1;\n    -webkit-animation-direction: alternate;\n    animation-direction: alternate;\n}\n\n.speed-up {\n    -webkit-animation-duration: 0.5s;\n    animation-duration: 0.5s;\n}\n\n.loop {\n    -webkit-animation-iteration-count: infinite;\n    animation-iteration-count: infinite;\n}\n\n.komaochi {\n    -webkit-animation-timing-function: steps(12);\n    animation-timing-function: steps(12);\n}\n\n.vartical-align-baseline {\n    -webkit-transform-origin: center 90%;\n    transform-origin: center 90%;\n}\n\n@-webkit-keyframes dokaben {\n    0% {\n        -webkit-transform: rotate3d(1, 0, 0, -90deg);\n        transform: rotate3d(1, 0, 0, -90deg);\n    }\n    100% {\n        -webkit-transform: rotate3d(1, 0, 0, 0deg);\n        transform: rotate3d(1, 0, 0, 0deg);\n    }\n}\n\n@keyframes dokaben {\n    0% {\n        -webkit-transform: rotate3d(1, 0, 0, -90deg);\n        transform: rotate3d(1, 0, 0, -90deg);\n    }\n    100% {\n        -webkit-transform: rotate3d(1, 0, 0, 0deg);\n        transform: rotate3d(1, 0, 0, 0deg);\n    }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 321 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(322);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(318)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./button.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./button.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 322 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(317)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".btn {\n    background:#2a91db;\n    box-shadow:0 3px #1d6ea7;\n    position:relative;\n    display:inline-block;\n    top:-2px;\n    padding:10px 20px;\n    text-decoration: none;\n    color: #fff;\n}\n.btn:hover {\n    box-shadow:0 1px #1d6ea7;\n    top:1px;\n}\n", ""]);
 
 	// exports
 
