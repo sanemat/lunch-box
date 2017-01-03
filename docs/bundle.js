@@ -8210,6 +8210,8 @@
 
 	__webpack_require__(317);
 
+	__webpack_require__(319);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	document.querySelector('.app-container').innerHTML = _container2.default;
@@ -25975,7 +25977,7 @@
 /* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div id=\"player-1-wrapper\">\n    <div id=\"player-1\"></div>\n    <img src=\"" + __webpack_require__(312) + "\" class=\"js-lunch-box dokaben komaochi loop hidden\">\n</div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n    Usage:\n    <ul>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11\">https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10\">https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5\">https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5</a></li>\n    </ul>\n</div>\n";
+	module.exports = "<div id=\"player-1-wrapper\">\n    <div id=\"player-1\"></div>\n    <img src=\"" + __webpack_require__(312) + "\" class=\"js-lunch-box dokaben komaochi loop hidden\">\n</div>\n<div id=\"player-2\"></div>\n<div class=\"nav\">\n</div>\n<div clas=\"note\">\n    <ul>\n        <li>Requirement: Chrome, Firefox, ios safari (ios >= 10), android firefox, android chrome</li>\n        <li>Main movie stops on ios :(</li>\n        <li>Player1 url: <span class=\"player-1-url\"></span></li>\n        <li>Player2 url: <span class=\"player-2-url\"></span></li>\n    </ul>\n    Usage:\n    <ul>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11\">https://sanemat.github.io/lunch-box/?pv=k4xGqY5IDBE&st=11</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10\">https://sanemat.github.io/lunch-box/?pv=M89VLZgo1Vg&st=10</a></li>\n        <li><a href=\"https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5\">https://sanemat.github.io/lunch-box/?pv=CTl1BDngldc&st=5</a></li>\n    </ul>\n    <a href=\"#\" class=\"btn\">Tweet this</a>\n</div>\n";
 
 /***/ },
 /* 312 */
@@ -26367,6 +26369,46 @@
 
 	// module
 	exports.push([module.id, "/*http://codepen.io/trkbt10/pen/YpdOXe*/\nh1 {\n    margin: 0.25em 0;\n    display: inline-block;\n    font-size: 84px;\n    text-align: center;\n    color: #bf2b04;\n}\n\n.dokaben {\n    font-family: 'dokaben_ver2_1';\n    font-weight: normal;\n    text-shadow: rgba(93, 20, 0, 0.9) 0px 2px 0px, rgba(93, 20, 0, 0.9) -2px 0px 0px, rgba(93, 20, 0, 0.9) 0px -2px 0px, rgba(93, 20, 0, 0.9) -2px 0px 0px, rgba(93, 20, 0, 0.9) 2px 2px 0px, rgba(93, 20, 0, 0.9) -2px 2px 0px, rgba(93, 20, 0, 0.9) 2px -2px 0px, rgba(93, 20, 0, 0.9) -2px -2px 0px;\n    -webkit-transform-origin: center bottom;\n    transform-origin: center bottom;\n    -webkit-animation: dokaben 2s;\n    animation: dokaben 2s;\n    -webkit-animation-timing-function: linear;\n    animation-timing-function: linear;\n    -webkit-animation-iteration-count: 1;\n    animation-iteration-count: 1;\n    -webkit-animation-direction: alternate;\n    animation-direction: alternate;\n}\n\n.speed-up {\n    -webkit-animation-duration: 0.5s;\n    animation-duration: 0.5s;\n}\n\n.loop {\n    -webkit-animation-iteration-count: infinite;\n    animation-iteration-count: infinite;\n}\n\n.komaochi {\n    -webkit-animation-timing-function: steps(12);\n    animation-timing-function: steps(12);\n}\n\n.vartical-align-baseline {\n    -webkit-transform-origin: center 90%;\n    transform-origin: center 90%;\n}\n\n@-webkit-keyframes dokaben {\n    0% {\n        -webkit-transform: rotate3d(1, 0, 0, -90deg);\n        transform: rotate3d(1, 0, 0, -90deg);\n    }\n    100% {\n        -webkit-transform: rotate3d(1, 0, 0, 0deg);\n        transform: rotate3d(1, 0, 0, 0deg);\n    }\n}\n\n@keyframes dokaben {\n    0% {\n        -webkit-transform: rotate3d(1, 0, 0, -90deg);\n        transform: rotate3d(1, 0, 0, -90deg);\n    }\n    100% {\n        -webkit-transform: rotate3d(1, 0, 0, 0deg);\n        transform: rotate3d(1, 0, 0, 0deg);\n    }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 319 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(320);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(316)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./button.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./button.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 320 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(315)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".btn {\n    background:#2a91db;\n    box-shadow:0 3px #1d6ea7;\n    position:relative;\n    display:inline-block;\n    top:-2px;\n    padding:10px 20px;\n    text-decoration: none;\n    color: #fff;\n}\n.btn:hover {\n    box-shadow:0 1px #1d6ea7;\n    top:1px;\n}\n", ""]);
 
 	// exports
 

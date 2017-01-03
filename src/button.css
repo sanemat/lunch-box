@@ -1,0 +1,14 @@
+.btn {
+    background:#2a91db;
+    box-shadow:0 3px #1d6ea7;
+    position:relative;
+    display:inline-block;
+    top:-2px;
+    padding:10px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+.btn:hover {
+    box-shadow:0 1px #1d6ea7;
+    top:1px;
+}
