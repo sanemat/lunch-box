@@ -66,12 +66,12 @@ update(player1, player2);
 function setTweetUrl() {
   const md = new MobileDetect(window.navigator.userAgent);
   let targetUrl = '#';
-  if(md.is('iOS')){
-    targetUrl = 'twitter://post?message=' + encodeURIComponent('全く気付かないうちにあの曲になる ' + location.href);
+  if (md.is('iOS')) {
+    targetUrl = `twitter://post?message=${encodeURIComponent('全く気付かないうちにあの曲になる ' + location.href)}`;
   } else if (md.is('androidOS')) {
-    targetUrl = 'intent://post?message=' + encodeURIComponent('全く気付かないうちにあの曲になる ' + location.href) + '#Intent;scheme=twitter;package=com.twitter.android;end;'
+    targetUrl = `intent://post?message=${encodeURIComponent('全く気付かないうちにあの曲になる ' + location.href)}#Intent;scheme=twitter;package=com.twitter.android;end;`;
   } else {
-    targetUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent('全く気付かないうちにあの曲になる') + '&url=' + encodeURIComponent(location.href);
+    targetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent('全く気付かないうちにあの曲になる')}&url=${encodeURIComponent(location.href)}`;
   }
   Array.from(document.getElementsByClassName('btn-twitter'), target => { target.href = targetUrl; })
 }
